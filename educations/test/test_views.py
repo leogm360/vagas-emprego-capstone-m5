@@ -12,6 +12,9 @@ class EducationViewTest(APITestCase):
         cls.education01 = {'institution_name': 'Kenzie Academy', 'course':'FullStack Web','start_date':'2021-09-27',
         'end_date':'2022-09-27','certificate_link':'https://media-exp1.licdn.com/dms/image/C4E22AQHFYWuZij27pQ/feedshare-shrink_800/0/1645312473587?e=1659571200&v=beta&t=7eRbog9lRjfJHbtPD2L6LJGi1s3msB4UwuwHUZ_fq2A'}
 
+        # cls.education02 = {'institution_name': 'Kenzie Academy', 'course':'FullStack Web','start_date':'2021-09-27',
+        # 'end_date':'2022-09-27','certificate_link':'https://media-exp1.licdn.com/dms/image/C4E22AQHFYWuZij27pQ/feedshare-shrink_800/0/1645312473587?e=1659571200&v=beta&t=7eRbog9lRjfJHbtPD2L6LJGi1s3msB4UwuwHUZ_fq2A'}
+
     def test_create_education_only_authenticated_success(self):
         ...
     def test_create_education_not_authenticated_fail(self):
