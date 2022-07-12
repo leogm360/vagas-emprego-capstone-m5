@@ -44,7 +44,10 @@ class LoginAccountsView(APIView):
 # PATCH  /api/accounts/<int:pk>/ - atualiza parcialmente os dados do usuário, somente dono da conta.
 # DELETE /api/accounts/<int:pk>/ - desativa a conta de um usuário, somente dono da conta.
 
-
+class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
+    
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
 
 # GET /api/accounts/<int:pk>/jobs/ - lista todas as vagas nas quais o candidato se inscreveu, somente dono da conta.
 
