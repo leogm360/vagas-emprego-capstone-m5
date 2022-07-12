@@ -10,6 +10,7 @@ class GenderFieldChoice(models.TextChoices):
     transgender = ("Transgender", "T")
     non_binary = ("Non Binary", "NB")
 
+
 class Account(AbstractUser):
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=50)
@@ -20,8 +21,8 @@ class Account(AbstractUser):
         choices=GenderFieldChoice.choices,
     )
     phone = models.CharField(max_length=11, unique=True)
-
     is_human_resources = models.BooleanField(default=False)
+    
     # address = models.OneToOneField(
     #     "addresses.Address", on_delete=models.CASCADE, null=True
     # )
