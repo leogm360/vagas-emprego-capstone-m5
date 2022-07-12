@@ -117,7 +117,7 @@ PROD_DATABASE = {
         "PORT": env.get_var("POSTGRES_PORT"),
     }
 }
-print("fg274fg28fg28vbvb2v--------------------",env.get_var("PROJECT_ENV"))
+
 DATABASES = (
     DEV_DATABASE if env.get_var("PROJECT_ENV") == "dev" else PROD_DATABASE
 )
