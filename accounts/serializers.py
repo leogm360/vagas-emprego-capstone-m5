@@ -28,3 +28,8 @@ class AccountSerializer(serializers.ModelSerializer):
         user = Account.objects.create_user(**validated_data)
 
         return user
+
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=255)
+    password = serializers.CharField(write_only=True)
