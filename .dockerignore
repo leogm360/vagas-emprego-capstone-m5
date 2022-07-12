@@ -1,0 +1,11 @@
+venv
+
+db.sqlite3
+
+.env
+
+.env.example
+
+.gitignore
+
+LICENSE
