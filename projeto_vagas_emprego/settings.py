@@ -15,23 +15,24 @@ from pathlib import Path
 
 import dotenv
 
-dotenv.load_dotenv()
+from .utils import EnvironManager
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Loads project .env variables
+env = EnvironManager(BASE_DIR, ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = env.get_var("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.get_var("DEBUG")
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = env.get_var("ALLOWED_HOSTS", do_format=list)
 
 # Application definition
 
@@ -95,28 +96,31 @@ WSGI_APPLICATION = "projeto_vagas_emprego.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# COMANDO PARA RODAR SERVIDOR EM DESENVOLVIMENTO
-# DEV=DEV ./manage.py runserver
+# WARNING: remember to set PROJECT_ENV to 'dev' on development and 'prod' on
+# production.
 
-if os.environ.get("DEV"):
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
+DEV_DATABASE = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("POSTGRES_DB"),
-            "USER": os.environ.get("POSTGRES_USER"),
-            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-            "HOST": "db",
-            "PORT": 5432,
-        }
-    }
+}
 
+
+PROD_DATABASE = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env.get_var("POSTGRES_DB"),
+        "USER": env.get_var("POSTGRES_USER"),
+        "PASSWORD": env.get_var("POSTGRES_PASSWORD"),
+        "HOST": env.get_var("POSTGRES_HOST"),
+        "PORT": env.get_var("POSTGRES_PORT"),
+    }
+}
+
+DATABASES = (
+    DEV_DATABASE if env.get_var("PROJECT_ENV") == "dev" else PROD_DATABASE
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
