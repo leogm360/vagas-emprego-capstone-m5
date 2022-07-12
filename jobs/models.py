@@ -16,12 +16,10 @@ class RegimeChoices(models.TextChoices):
 class Job(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    salary = models.DecimalField()
+    salary = models.DecimalField(max_digits=5, decimal_places=2)
     location = models.CharField(max_length=50)
-    job_type = models.CharField(max_length=9, choices=JobChoices.choices,
-        default=JobChoices.DEFAULT)
-    regimen_type = models.CharField(max_length=10, choices=RegimeChoices.choices,
-        default=RegimeChoices.DEFAULT)
+    job_type = models.CharField(max_length=9, choices=JobChoices.choices)
+    regimen_type = models.CharField(max_length=10, choices=RegimeChoices.choices)
     vacancies_count = models.IntegerField(validators=[MinValueValidator(1)])
     subscribers_count = models.IntegerField(default=0)
     issued_at = models.DateTimeField(auto_now_add=True)
@@ -31,10 +29,10 @@ class Job(models.Model):
         "accounts.Account", related_name="accounts_id"
     )
 
-    skill = models.ManyToManyField(
-        "skills.Skill", related_name="skill_id"
-    )
+    # skill = models.ManyToManyField(
+    #     "skills.Skill", related_name="skill_id"
+    # )
 
-    company = models.ForeignKey(
-        "companies.Company", on_delete=models.CASCADE, related_name="company_id"
-    )
+    # company = models.ForeignKey(
+    #     "companies.Company", on_delete=models.CASCADE, related_name="company_id"
+    # )

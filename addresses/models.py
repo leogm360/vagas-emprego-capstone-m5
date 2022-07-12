@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class Address(models.model):
+class Address(models.Model):
     zip_code = models.CharField(max_length=8)
     street = models.CharField(max_length=255)
     number = models.IntegerField()
