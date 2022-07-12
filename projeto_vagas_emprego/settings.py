@@ -117,10 +117,12 @@ PROD_DATABASE = {
         "PORT": env.get_var("POSTGRES_PORT"),
     }
 }
-
+print("fg274fg28fg28vbvb2v--------------------",env.get_var("PROJECT_ENV"))
 DATABASES = (
     DEV_DATABASE if env.get_var("PROJECT_ENV") == "dev" else PROD_DATABASE
 )
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -179,3 +181,5 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "0.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+AUTH_USER_MODEL = 'accounts.Account'
