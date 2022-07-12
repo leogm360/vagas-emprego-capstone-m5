@@ -37,7 +37,7 @@ class EnvironManager:
         else:
             self._load_env_file()
 
-            self.env = environ.Env(DEBUG=(bool, False))
+            self.env = environ.Env()
 
     def _load_env_file(self):
         return environ.Env.read_env(

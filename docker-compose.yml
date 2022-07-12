@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  db_prod:
+    image: postgres:latest
+    env_file: .env
+    ports:
+      - 45432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      
+  migration:
+      build: .
+      env_file: .env
+      command: bash -c 'while !</dev/tcp/db_prod/5432; do sleep 1; done; python manage.py migrate'
+      volumes: 
+        - .:/web_app
+      depends_on:
+        - db_prod
+  
+  web_app:
+      build: .
+      env_file: .env
+      command: bash -c 'while !</dev/tcp/db_prod/5432; do sleep 1; done; python manage.py runserver 0.0.0.0:8000'
+      volumes:
+        - .:/web_app
+      stdin_open: true
+      tty: true
+      ports:
+        - 48000:8000
+      depends_on:
+        - db_prod
+        - migration
+      
+volumes:
+  pgdata:

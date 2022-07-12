@@ -30,7 +30,7 @@ env = EnvironManager(BASE_DIR, ".env")
 SECRET_KEY = env.get_var("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.get_var("DEBUG")
+DEBUG = env.get_var("DEBUG", do_format=bool)
 
 ALLOWED_HOSTS = env.get_var("ALLOWED_HOSTS", do_format=list)
 
@@ -168,6 +168,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
     "DEFAULT_AUTHENTICATION_CLASSES": "rest_framework.authentication.TokenAuthentication",
+    "COERCE_DECIMAL_TO_STRING": False,
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "EXCEPTION_HANDLER": "projeto_vagas_emprego.utils.exception_handler",
 }
