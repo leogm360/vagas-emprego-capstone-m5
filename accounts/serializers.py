@@ -46,3 +46,33 @@ class AccountEducationsSerializer(serializers.ModelSerializer):
             "educations",
         ]
         read_only_fields = ['educations']
+
+
+class ActiveDeactiveAccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = [
+            "id",
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "cpf",
+            "gender",
+            "phone",
+            "is_human_resources",
+            "is_superuser",
+            "is_active"
+        ]
+        read_only_fields = [
+            "id",
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "cpf",
+            "gender",
+            "phone",
+            "is_human_resources",
+            "is_superuser",
+        ]

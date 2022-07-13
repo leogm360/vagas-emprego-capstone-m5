@@ -11,7 +11,7 @@ from rest_framework.authentication import TokenAuthentication
 from .models import Account
 from educations.models import Education
 from educations.serializers import EducationSerializer, ListEducationSerializer
-from .serializers import AccountEducationsSerializer, AccountSerializer, LoginSerializer
+from .serializers import AccountEducationsSerializer, AccountSerializer, LoginSerializer, ActiveDeactiveAccountSerializer
 
 
 # POST /api/accounts/register/ - registra um usuário.
@@ -58,7 +58,8 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
 
 
 # GET /api/accounts/<int:pk>/jobs/ - lista todas as vagas nas quais o candidato se inscreveu, somente dono da conta.
-
+class ListJobsView(generics.ListAPIView):
+    ...
 
 # PATCH  /api/accounts/<int:pk>/company/<int:pk>/bind - associa um usuário recrutador a uma empresa, somente usuários recrutadores.
 
@@ -67,7 +68,12 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
 
 
 # PATCH /api/accounts/<pk:int>/management/activation/ - ativa/desativa conta do usuário, somente admin.
-
+class ActiveDeactiveAccountView(generics.UpdateAPIView):
+    # authentication_classes = []
+    # permission_classes = []
+    queryset = Account.objects.all()
+    serializer_class = ActiveDeactiveAccountSerializer
+    
 
 # Education Views
 
