@@ -30,6 +30,16 @@ class EducationModelTest(TestCase):
         max_length = education._meta.get_field('certificate_link').max_length
         self.assertEquals(max_length, 255)
 
+    def test_date_field_format_invalid(self):
+        with self.assertRaises(ValidationError):
+            newEducation = Education.objects.create(
+                institution_name="name",
+                course="test",
+                start_date='12/12/2022',
+                end_date='12/12/2022',
+                certificate_link=True,
+            )
+
     def test_invalid_any_keys(self):
         with self.assertRaises(IntegrityError):
             newEducation = Education.objects.create(

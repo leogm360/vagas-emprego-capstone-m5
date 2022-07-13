@@ -58,6 +58,7 @@ PROJECT_APPS = [
     "educations",
     "jobs",
     "skills",
+    "documentations",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -164,7 +165,9 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
 AUTH_USER_MODEL = "accounts.Account"
+
 
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "projeto_vagas_emprego.utils.exception_handler",
@@ -175,7 +178,11 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
+    "EXCEPTION_HANDLER": "projeto_vagas_emprego.utils.exception_handler",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+
 }
+
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Vagas de Emprego",
