@@ -1,10 +1,11 @@
 from rest_framework import permissions
+from rest_framework.views import Request
 
 from .models import Account
 
 
 class IsOwnerAccountOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj: Account):
+    def has_object_permission(self, request:Request, view, obj:Account):
         if request.method in permissions.SAFE_METHODS:
             return True
 
@@ -16,11 +17,13 @@ class IsOwnerOnlyCanRUD(permissions.BasePermission):
 
 
 class IsCandidateOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj: Account):
+    def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
         return (
-            obj.is_human_resources == False
-            and obj.is_human_resources == request.user.is_human_resources
-            and obj == request.user
+            request.user.is_authenticated
+        and request.user.is_human_resources == False
         )
 
 

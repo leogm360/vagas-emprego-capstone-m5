@@ -5,7 +5,7 @@ from jobs.models import Job
 
 
 class JobSerializer(serializers.ModelSerializer):
-    location = SerializerMethodField(read_only=True)
+    # location = SerializerMethodField(read_only=True)
 
     class Meta:
         model = Job
@@ -19,4 +19,4 @@ class JobSerializer(serializers.ModelSerializer):
         ]
 
     # def get_location(self, address: Address) -> str:
-    #     return address
+    #     return Company.address.city
