@@ -1,3 +1,12 @@
+import uuid
+
 from django.db import models
 
-# Create your models here.
+
+class Company(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    name = models.CharField(max_length=255)
+    cnpj = models.CharField(max_length=14)
+    phone = models.CharField(max_length=11)
+    date_joined = models.DateTimeField(auto_now=True)
+    adress = models.OneToOneField("addresses.Address", on_delete=models.CASCADE)

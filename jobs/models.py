@@ -1,10 +1,12 @@
-from django.db import models
 from django.core.validators import MinValueValidator
+from django.db import models
+
 
 class JobChoices(models.TextChoices):
     CLT = ("CLT",)
     PJ = ("PJ",)
     TEMPORARY = ("TEMPORARY",)
+
 
 class RegimeChoices(models.TextChoices):
     PRESENCIAL = ("PRESENCIAL",)
@@ -19,7 +21,9 @@ class Job(models.Model):
     salary = models.DecimalField(max_digits=5, decimal_places=2)
     location = models.CharField(max_length=50)
     job_type = models.CharField(max_length=9, choices=JobChoices.choices)
-    regimen_type = models.CharField(max_length=10, choices=RegimeChoices.choices)
+    regimen_type = models.CharField(
+        max_length=10, choices=RegimeChoices.choices
+    )
     vacancies_count = models.IntegerField(validators=[MinValueValidator(1)])
     subscribers_count = models.IntegerField(default=0)
     issued_at = models.DateTimeField(auto_now_add=True)

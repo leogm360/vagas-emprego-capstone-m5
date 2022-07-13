@@ -1,11 +1,13 @@
-from rest_framework.exceptions import APIException
-from rest_framework.status import HTTP_409_CONFLICT
+from rest_framework.views import (
+    exception_handler as rest_framework_exception_handler,
+)
 
 
-class DataConflict(APIException):
-    status_code = HTTP_409_CONFLICT
-    default_detail = "Internal data is conflicting."
-    default_code = "data_conflict"
+def exception_handler(exc, context):
+    response = rest_framework_exception_handler(exc, context)
 
-    def __init__(self, detail=None, code=None):
-        super().__init__(detail, code)
+    if response is not None:
+        response.data["status"] = "error"
+        response.data["status_code"] = response.status_code
+
+    return response

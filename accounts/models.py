@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-
 from .utils import CustomUserManager
 
 
@@ -21,8 +20,8 @@ class Account(AbstractUser):
         choices=GenderFieldChoice.choices,
     )
     phone = models.CharField(max_length=11, unique=True)
-    is_human_resources = models.BooleanField(default=False)
-    
+    is_recruiter = models.BooleanField(default=False)
+
     # address = models.OneToOneField(
     #     "addresses.Address", on_delete=models.CASCADE, null=True
     # )
@@ -32,12 +31,12 @@ class Account(AbstractUser):
     # )
 
     username = None
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = [
-        'first_name', 
-        'last_name', 
-        'cpf', 
-        'gender', 
-        'phone',
-        ]
+        "first_name",
+        "last_name",
+        "cpf",
+        "gender",
+        "phone",
+    ]
     objects = CustomUserManager()
