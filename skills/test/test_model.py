@@ -31,6 +31,11 @@ class SkillModelTest(TestCase):
 
         self.assertEquals(skill.description, self.skill_one["description"])
 
+    def test_model_skill_ordering_meta_data(self):
+        skill: Skill = Skill.objects.get(pk=self.created_skill_one.id)
+
+        self.assertEqual(skill._meta.ordering[0], "id")
+
     def test_model_skill_representation(self):
         skill: Skill = Skill.objects.get(pk=self.created_skill_one.id)
 
