@@ -1,10 +1,9 @@
-from attr import fields
 from rest_framework import serializers
 
 from .models import Account
 
-class AccountSerializer(serializers.ModelSerializer):
 
+class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = [
@@ -16,13 +15,11 @@ class AccountSerializer(serializers.ModelSerializer):
             "cpf",
             "gender",
             "phone",
-            "is_human_resources",
+            "is_recruiter",
             "is_superuser",
         ]
         read_only_fields = ["id", "is_superuser"]
-        extra_kwargs = {
-            'password': {'write_only':True}
-        }
+        extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data: dict):
         user = Account.objects.create_user(**validated_data)
