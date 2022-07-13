@@ -10,7 +10,9 @@ urlpatterns = [
     path("accounts/education/",views.ListCreateEducationsView.as_view()),
     path("accounts/education/<pk>/",views.RetrievePatchEducationView.as_view()),
     path("accounts/<int:account_id>/education/", views.ListEducationsAccount.as_view()),
+
     path("accounts/<pk>/", views.AccountsDetailsView.as_view()),
+    path("accounts/<pk>/management/activation/", views.ActiveDeactiveAccountView.as_view())
 ]
 
 

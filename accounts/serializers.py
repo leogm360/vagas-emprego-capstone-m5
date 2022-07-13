@@ -1,3 +1,4 @@
+from attr import fields
 from rest_framework import serializers
 
 from educations.serializers import ListEducationSerializer
@@ -27,6 +28,11 @@ class AccountSerializer(serializers.ModelSerializer):
 
         return user
 
+class ListAccountsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = "__all__"
+
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
@@ -46,3 +52,33 @@ class AccountEducationsSerializer(serializers.ModelSerializer):
             "educations",
         ]
         read_only_fields = ['educations']
+
+
+class ActiveDeactiveAccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = [
+            "id",
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "cpf",
+            "gender",
+            "phone",
+            "is_human_resources",
+            "is_superuser",
+            "is_active"
+        ]
+        read_only_fields = [
+            "id",
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "cpf",
+            "gender",
+            "phone",
+            "is_human_resources",
+            "is_superuser",
+        ]

@@ -11,6 +11,10 @@ class IsOwnerAccountOnly(permissions.BasePermission):
 
         return obj.account_id == request.user.id
 
+class IsOwnerOnlyCanRUD(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj:Account):
+        return obj == request.user
+
 
 class IsCandidateOnly(permissions.BasePermission):
     def has_permission(self, request, view):
