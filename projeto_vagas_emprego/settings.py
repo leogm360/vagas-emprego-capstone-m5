@@ -167,7 +167,7 @@ AUTH_USER_MODEL = "accounts.Account"
 
 # Rest framework settings
 REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "projeto_vagas_emprego.utils.exception_handler",
+    "EXCEPTION_HANDLER": "projeto_vagas_emprego.exceptions.exception_handler",
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication"
     ],
