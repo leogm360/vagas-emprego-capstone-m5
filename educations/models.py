@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Education(models.Model):
     institution_name = models.CharField(max_length=255)
     course = models.CharField(max_length=20)
@@ -9,4 +10,9 @@ class Education(models.Model):
     end_date = models.DateField()
     certificate_link = models.CharField(max_length=255)
 
-    account = models.ForeignKey("accounts.Account", on_delete=models.CASCADE, related_name="account_id", default=None)
+    account = models.ForeignKey(
+        "accounts.Account",
+        on_delete=models.CASCADE,
+        related_name="account_id",
+        default=None,
+    )

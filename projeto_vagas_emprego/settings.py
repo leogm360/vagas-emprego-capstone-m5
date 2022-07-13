@@ -10,10 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import os
 from pathlib import Path
-
-import dotenv
 
 from .utils import EnvironManager
 
@@ -165,10 +162,10 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+# Default django User model
 AUTH_USER_MODEL = "accounts.Account"
 
-
+# Rest framework settings
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "projeto_vagas_emprego.utils.exception_handler",
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -178,12 +175,9 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
-    "EXCEPTION_HANDLER": "projeto_vagas_emprego.utils.exception_handler",
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-
 }
 
-
+# Drf spectacular settings
 SPECTACULAR_SETTINGS = {
     "TITLE": "Vagas de Emprego",
     "DESCRIPTION": "API backend que simula interação entre usuários, empresas e vagas de emprego.",
