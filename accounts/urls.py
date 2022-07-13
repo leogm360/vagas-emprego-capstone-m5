@@ -7,6 +7,8 @@ urlpatterns = [
     path("accounts/", views.ListAccountsView.as_view()),
     path("accounts/login/", views.LoginAccountsView.as_view()),
     path("accounts/<pk>/", views.AccountsDetailsView.as_view()),
+
+    path("accounts/<pk>/education/", views.RegisterEducationView.as_view()),
 ]
 
 

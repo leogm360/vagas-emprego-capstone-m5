@@ -15,7 +15,7 @@ class AccountSerializer(serializers.ModelSerializer):
             "cpf",
             "gender",
             "phone",
-            "is_recruiter",
+            "is_human_resources",
             "is_superuser",
         ]
         read_only_fields = ["id", "is_superuser"]

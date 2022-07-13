@@ -20,7 +20,7 @@ class Account(AbstractUser):
         choices=GenderFieldChoice.choices,
     )
     phone = models.CharField(max_length=11, unique=True)
-    is_recruiter = models.BooleanField(default=False)
+    is_human_resources = models.BooleanField(default=False)
 
     # address = models.OneToOneField(
     #     "addresses.Address", on_delete=models.CASCADE, null=True

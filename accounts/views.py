@@ -3,7 +3,10 @@ from rest_framework import generics
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView, Response, status
 
+from educations.serializers import EducationSerializer
+
 from .models import Account
+from educations.models import Education
 from .serializers import AccountSerializer, LoginSerializer
 
 
@@ -60,3 +63,13 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
 
 
 # PATCH /api/accounts/<pk:int>/management/activation/ - ativa/desativa conta do usuário, somente admin.
+
+
+# Education Views
+
+class RegisterEducationView(generics.ListCreateAPIView):
+    queryset = Education.objects.all()
+    serializer_class = EducationSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(account=self.request.user)
