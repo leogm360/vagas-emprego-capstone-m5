@@ -1,3 +1,4 @@
+from attr import fields
 from rest_framework import serializers
 
 from educations.serializers import ListEducationSerializer
@@ -26,6 +27,11 @@ class AccountSerializer(serializers.ModelSerializer):
         user = Account.objects.create_user(**validated_data)
 
         return user
+
+class ListAccountsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = "__all__"
 
 
 class LoginSerializer(serializers.Serializer):
