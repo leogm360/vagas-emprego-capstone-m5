@@ -5,8 +5,8 @@ from .models import Company
 
 
 class CompanySerializer(serializers.ModelSerializer):
-    adress = AddressSerializer()
+    address = AddressSerializer()
 
     class Meta:
         model = Company
-        fiedls = "__all__"
+        fields ="__all__"
