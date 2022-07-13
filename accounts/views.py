@@ -4,7 +4,7 @@ from rest_framework import generics
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
-from accounts.permissions import IsOwnerAccountOnly
+from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly
 from rest_framework.authentication import TokenAuthentication
 
 
@@ -75,8 +75,8 @@ class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIVi
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsOwnerAccountOnly]
+    permission_classes = [IsCandidateOnly]
+    
 
     serializer_map = {
         "GET": ListEducationSerializer,
@@ -86,13 +86,13 @@ class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIVi
     def perform_create(self, serializer):
         return serializer.save(account=self.request.user)
 
+
 # List, Patch, Delete Educations From Education_Id
 
 class RetrievePatchEducationView(SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
-    authentication_classes = [TokenAuthentication]
     permission_classes = [IsOwnerAccountOnly]
 
     serializer_map = {
