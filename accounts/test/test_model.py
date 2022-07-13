@@ -20,11 +20,10 @@ class AccountsModelTest(TestCase):
             email=cls.email,
             first_name=cls.first_name,
             last_name=cls.last_name,
-            password=cls.password,
             cpf=cls.cpf,
             gender=cls.gender,
             phone=cls.phone,
-            is_human_resources=cls.is_human_resources,
+            password=cls.password
         )
 
         cls.recruiter = Account.objects.create_user(

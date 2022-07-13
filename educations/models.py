@@ -13,6 +13,6 @@ class Education(models.Model):
     account = models.ForeignKey(
         "accounts.Account",
         on_delete=models.CASCADE,
-        related_name="account_id",
+        related_name="account",
         default=None,
     )

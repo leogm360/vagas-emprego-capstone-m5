@@ -4,6 +4,9 @@ from django.db.models import CharField, Model, TextField
 
 
 class Skill(Model):
+    class Meta:
+        ordering = ["id"]
+
     title = CharField(max_length=50, unique=True)
     description = TextField()
 
