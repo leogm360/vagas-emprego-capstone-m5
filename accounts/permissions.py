@@ -5,7 +5,10 @@ from .models import Account
 
 class IsOwnerAccountOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj: Account):
-        return obj == request.user
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        return obj.account_id == request.user.id
 
 
 class IsCandidateOnly(permissions.BasePermission):

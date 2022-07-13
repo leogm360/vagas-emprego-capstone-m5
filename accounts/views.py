@@ -1,13 +1,17 @@
 from django.contrib.auth import authenticate
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView, Response, status
+from accounts.mixins import SerializerByMethodMixin
+from accounts.permissions import IsOwnerAccountOnly
+from rest_framework.authentication import TokenAuthentication
 
-from educations.serializers import EducationSerializer
 
 from .models import Account
 from educations.models import Education
-from .serializers import AccountSerializer, LoginSerializer
+from educations.serializers import EducationSerializer, ListEducationSerializer
+from .serializers import AccountEducationsSerializer, AccountSerializer, LoginSerializer
 
 
 # POST /api/accounts/register/ - registra um usuário.
@@ -67,9 +71,42 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
 
 # Education Views
 
-class RegisterEducationView(generics.ListCreateAPIView):
+class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIView):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsOwnerAccountOnly]
+
+    serializer_map = {
+        "GET": ListEducationSerializer,
+        "POST": EducationSerializer,
+    }
+
     def perform_create(self, serializer):
         return serializer.save(account=self.request.user)
+
+# List, Patch, Delete Educations From Education_Id
+
+class RetrievePatchEducationView(SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView):
+    queryset = Education.objects.all()
+    serializer_class = EducationSerializer
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsOwnerAccountOnly]
+
+    serializer_map = {
+        "GET": ListEducationSerializer,
+        "PATCH": ListEducationSerializer,
+    }
+
+# List Educations From User Id
+
+class ListEducationsAccount(generics.ListAPIView):
+    queryset = Education.objects.all()
+    serializer_class = ListEducationSerializer
+
+    def get_queryset(self):
+         account = get_object_or_404(Account, pk=self.kwargs["account_id"])
+
+         return Education.objects.filter(account=account)
