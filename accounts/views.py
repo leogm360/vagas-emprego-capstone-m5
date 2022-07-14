@@ -2,10 +2,15 @@ from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.authtoken.models import Token
+from addresses.models import Address 
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
-from accounts.permissions import IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
+from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
 from rest_framework.authentication import TokenAuthentication
+from addresses.serializers import AddressSerializer
+
+from jobs.models import Job
+from jobs.serializers import JobSerializer, UserRegisterJobSerializer
 
 
 from .models import Account
@@ -18,6 +23,14 @@ from . import serializers
 class RegisterAccountView(generics.CreateAPIView):
     queryset = Account.objects.all()
     serializer_class = serializers.AccountSerializer
+
+    def perform_create(self, serializer):
+        addressserializer = AddressSerializer(data=self.request.data["address"])
+        addressserializer.is_valid()
+
+        ad1 = Address.objects.create(**addressserializer.validated_data)
+        ad1.save()
+        serializer.save(address=ad1)
 
 
 # GET /api/accounts/ - lista todos os usuários, somente admin.
@@ -125,3 +138,21 @@ class ListEducationsAccount(generics.ListAPIView):
          account = get_object_or_404(Account, pk=self.kwargs["account_id"])
 
          return Education.objects.filter(account=account)
+
+
+#Jobs Views
+
+class UserRegisterJobView(generics.CreateAPIView):
+    queryset = Job.objects.all()
+    serializer_class = UserRegisterJobSerializer
+
+    def perform_create(self, serializer):
+        job = get_object_or_404(Job, pk=self.kwargs["job_id"])
+
+        user = self.request.user
+
+        test = UserRegisterJobSerializer(user, data=job)
+
+
+        print(user)
+        print(job)
