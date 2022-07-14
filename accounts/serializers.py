@@ -1,11 +1,13 @@
-from attr import fields
 from rest_framework import serializers
+from addresses.serializers import AddressSerializer
 
 from educations.serializers import ListEducationSerializer
 
 from .models import Account
 
 class AccountSerializer(serializers.ModelSerializer):
+    address = AddressSerializer()
+
     class Meta:
         model = Account
         fields = [
@@ -17,8 +19,10 @@ class AccountSerializer(serializers.ModelSerializer):
             "cpf",
             "gender",
             "phone",
+            "address",
             "is_human_resources",
             "is_superuser",
+            "company_id"
         ]
         read_only_fields = ["id", "is_superuser"]
         extra_kwargs = {"password": {"write_only": True}}
@@ -32,6 +36,7 @@ class ListAccountsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = "__all__"
+        extra_kwargs = {"password": {"write_only": True}}
 
 
 class LoginSerializer(serializers.Serializer):

@@ -28,11 +28,13 @@ class IsCandidateOnly(permissions.BasePermission):
 
 
 class IsRecruiterOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj: Account):
+    def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
         return (
-            obj.is_human_resources == True
-            and obj.is_human_resources == request.user.is_human_resources
-            and obj == request.user
+            request.user.is_authenticated
+        and request.user.is_human_resources == True
         )
 
 

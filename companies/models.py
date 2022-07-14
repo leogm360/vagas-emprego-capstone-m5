@@ -9,4 +9,5 @@ class Company(models.Model):
     cnpj = models.CharField(max_length=14)
     phone = models.CharField(max_length=11)
     date_joined = models.DateTimeField(auto_now=True)
+    
     address = models.OneToOneField("addresses.Address", on_delete=models.CASCADE)

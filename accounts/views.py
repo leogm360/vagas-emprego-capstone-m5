@@ -2,10 +2,12 @@ from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.authtoken.models import Token
+from addresses.models import Address 
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
 from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
 from rest_framework.authentication import TokenAuthentication
+from addresses.serializers import AddressSerializer
 
 from jobs.models import Job
 from jobs.serializers import JobSerializer, UserRegisterJobSerializer
@@ -15,13 +17,20 @@ from .models import Account
 from educations.models import Education
 from educations.serializers import EducationSerializer, ListEducationSerializer
 from . import serializers
-import accounts
 
 
 # POST /api/accounts/register/ - registra um usuário.
 class RegisterAccountView(generics.CreateAPIView):
     queryset = Account.objects.all()
     serializer_class = serializers.AccountSerializer
+
+    def perform_create(self, serializer):
+        addressserializer = AddressSerializer(data=self.request.data["address"])
+        addressserializer.is_valid()
+
+        ad1 = Address.objects.create(**addressserializer.validated_data)
+        ad1.save()
+        serializer.save(address=ad1)
 
 
 # GET /api/accounts/ - lista todos os usuários, somente admin.
@@ -142,6 +151,8 @@ class UserRegisterJobView(generics.CreateAPIView):
 
         user = self.request.user
 
-        serializer.update(data = job, account = user)
+        test = UserRegisterJobSerializer(user, data=job)
+
 
         print(user)
+        print(job)

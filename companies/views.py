@@ -1,4 +1,7 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
+
+from accounts.permissions import IsCandidateOnly, IsRecruiterOnly
 from .models import Company 
 from .serializers import CompanySerializer
 from addresses.models import Address 
@@ -39,6 +42,14 @@ class DetailCompanyView(generics.RetrieveUpdateDestroyAPIView):
 class CreateJobView(generics.CreateAPIView):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
+
+    permission_classes = [IsRecruiterOnly]
+
+    def perform_create(self, serializer):
+        company = Company.objects.get(id=self.request.user.company_id)
+
+        serializer(data=self.request, company=company)
+
 
 class ListJobView(generics.ListAPIView):
     queryset = Job.objects.all()
