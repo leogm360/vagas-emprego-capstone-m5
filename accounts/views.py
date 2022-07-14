@@ -4,7 +4,12 @@ from rest_framework import generics
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
-from accounts.permissions import IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
+from accounts.permissions import (
+    IsCandidateOnly,
+    IsOwnerAccountOnly,
+    IsAdmOnly,
+    IsOwnerOrAdmin,
+)
 from rest_framework.authentication import TokenAuthentication
 
 
@@ -24,7 +29,6 @@ class RegisterAccountView(generics.CreateAPIView):
 class ListAccountsView(generics.ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdmOnly]
-
 
     queryset = Account.objects.all()
     serializer_class = serializers.ListAccountsSerializer
@@ -57,7 +61,7 @@ class LoginAccountsView(APIView):
 
 class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsOwnerOnlyCanRUD]
+    permission_classes = [IsOwnerOrAdmin]
 
     queryset = Account.objects.all()
     serializer_class = serializers.AccountSerializer
@@ -67,13 +71,16 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
 class ListJobsRegistredView(generics.ListAPIView):
     ...
 
+
 # PATCH  /api/accounts/<int:pk>/company/<int:pk>/bind - associa um usuário recrutador a uma empresa, somente usuários recrutadores.
 class AddCompanyToRecruiterView(generics.UpdateAPIView):
     ...
 
+
 # PATCH /api/accounts/<str:email>/recover/ - reativa a conta de um usuário desativado, livre.
 class ActiveAccountView(generics.UpdateAPIView):
     ...
+
 
 # PATCH /api/accounts/<pk:int>/management/activation/ - ativa/desativa conta do usuário, somente admin.
 class ActiveDeactiveAccountView(generics.UpdateAPIView):
@@ -82,16 +89,16 @@ class ActiveDeactiveAccountView(generics.UpdateAPIView):
 
     queryset = Account.objects.all()
     serializer_class = serializers.ActiveDeactiveAccountSerializer
-    
+
 
 # Education Views
+
 
 class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIView):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
     permission_classes = [IsCandidateOnly]
-    
 
     serializer_map = {
         "GET": ListEducationSerializer,
@@ -104,7 +111,10 @@ class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIVi
 
 # List, Patch, Delete Educations From Education_Id
 
-class RetrievePatchEducationView(SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView):
+
+class RetrievePatchEducationView(
+    SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView
+):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
@@ -115,13 +125,15 @@ class RetrievePatchEducationView(SerializerByMethodMixin, generics.RetrieveUpdat
         "PATCH": ListEducationSerializer,
     }
 
+
 # List Educations From User Id
+
 
 class ListEducationsAccount(generics.ListAPIView):
     queryset = Education.objects.all()
     serializer_class = ListEducationSerializer
 
     def get_queryset(self):
-         account = get_object_or_404(Account, pk=self.kwargs["account_id"])
+        account = get_object_or_404(Account, pk=self.kwargs["account_id"])
 
-         return Education.objects.filter(account=account)
+        return Education.objects.filter(account=account)

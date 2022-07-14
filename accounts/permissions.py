@@ -5,14 +5,20 @@ from .models import Account
 
 
 class IsOwnerAccountOnly(permissions.BasePermission):
-    def has_object_permission(self, request:Request, view, obj:Account):
+    def has_object_permission(self, request: Request, view, obj: Account):
         if request.method in permissions.SAFE_METHODS:
             return True
 
         return obj.account_id == request.user.id
 
-class IsOwnerOnlyCanRUD(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj:Account):
+
+class IsOwnerOrAdmin(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj: Account):
+        if request.method in permissions.SAFE_METHODS:
+            if request.user.is_superuser:
+                return True
+            return obj == request.user
+
         return obj == request.user
 
 
@@ -22,8 +28,7 @@ class IsCandidateOnly(permissions.BasePermission):
             return True
 
         return (
-            request.user.is_authenticated
-        and request.user.is_human_resources == False
+            request.user.is_authenticated and request.user.is_human_resources == False
         )
 
 
