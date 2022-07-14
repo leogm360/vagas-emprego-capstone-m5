@@ -11,3 +11,4 @@ class Address(models.Model):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=20)
+    

@@ -28,7 +28,7 @@ class CustomUserManager(BaseUserManager):
 
         return user
 
-    def create_user(self, email, password, is_human_resources, **extra_fields):
+    def create_user(self, email, password, is_human_resources=False, **extra_fields):
         return self._create_user(
             email, password, False, is_human_resources, **extra_fields
         )
