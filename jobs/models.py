@@ -30,7 +30,7 @@ class Job(models.Model):
     is_active = models.BooleanField(default=True)
 
     account = models.ManyToManyField(
-        "accounts.Account", related_name="accounts_id"
+        "accounts.Account", related_name="accounts_id", null=True
     )
 
     # skill = models.ManyToManyField(
