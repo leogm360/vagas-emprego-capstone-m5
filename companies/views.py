@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404
 from rest_framework import generics
 
 from accounts.permissions import IsCandidateOnly, IsRecruiterOnly
