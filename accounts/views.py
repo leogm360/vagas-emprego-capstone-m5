@@ -7,11 +7,15 @@ from accounts.mixins import SerializerByMethodMixin
 from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
 from rest_framework.authentication import TokenAuthentication
 
+from jobs.models import Job
+from jobs.serializers import JobSerializer, UserRegisterJobSerializer
+
 
 from .models import Account
 from educations.models import Education
 from educations.serializers import EducationSerializer, ListEducationSerializer
 from . import serializers
+import accounts
 
 
 # POST /api/accounts/register/ - registra um usuário.
@@ -125,3 +129,19 @@ class ListEducationsAccount(generics.ListAPIView):
          account = get_object_or_404(Account, pk=self.kwargs["account_id"])
 
          return Education.objects.filter(account=account)
+
+
+#Jobs Views
+
+class UserRegisterJobView(generics.CreateAPIView):
+    queryset = Job.objects.all()
+    serializer_class = UserRegisterJobSerializer
+
+    def perform_create(self, serializer):
+        job = get_object_or_404(Job, pk=self.kwargs["job_id"])
+
+        user = self.request.user
+
+        serializer.update(data = job, account = user)
+
+        print(user)
