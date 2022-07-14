@@ -4,7 +4,7 @@ from rest_framework import generics
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
-from accounts.permissions import IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
+from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
 from rest_framework.authentication import TokenAuthentication
 
 
