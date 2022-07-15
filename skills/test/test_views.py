@@ -34,6 +34,12 @@ class SkillViewTest(APITestCase):
             "status_code": HTTP_404_NOT_FOUND,
         }
 
+        cls.response_filter_required = {
+            "q": ["This field is required."],
+            "status": "error",
+            "status_code": HTTP_400_BAD_REQUEST,
+        }
+
     def test_view_skill_create_success(self):
         res = self.client.post("/api/skills/", self.skill_data, format="json")
 
@@ -146,3 +152,24 @@ class SkillViewTest(APITestCase):
 
         self.assertEquals(res.status_code, HTTP_404_NOT_FOUND)
         self.assertEquals(self.response_not_found, res.data)
+
+    def test_view_skill_search_skill_success(self):
+        skills_count = 1
+
+        self.client.post("/api/skills/", self.skill_data, format="json")
+
+        res = self.client.get(
+            f"/api/skills/search/?q={self.skill_data['title']}"
+        )
+
+        self.assertEquals(res.status_code, HTTP_200_OK)
+        self.assertEquals(res.data["count"], skills_count)
+        self.assertIsNone(res.data["next"])
+        self.assertIsNone(res.data["previous"])
+        self.assertDictContainsSubset(self.skill_data, res.data["results"][0])
+
+    def test_view_skill_search_skill_400_fail(self):
+        res = self.client.get(f"/api/skills/search/")
+
+        self.assertEquals(res.status_code, HTTP_400_BAD_REQUEST)
+        self.assertEquals(self.response_filter_required, res.data)
