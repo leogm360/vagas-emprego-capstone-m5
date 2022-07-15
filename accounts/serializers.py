@@ -1,3 +1,4 @@
+from asyncore import write
 from rest_framework import serializers
 from addresses.serializers import AddressSerializer
 from companies.serializers import CompanySerializer, CompanyUserSerializer
@@ -21,7 +22,7 @@ class AccountSerializer(serializers.ModelSerializer):
             "gender",
             "phone",
             "address",
-            "is_human_resources",
+            "is_human_resources"
         ]
         read_only_fields = ["id"]
 
@@ -37,7 +38,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
 class AccountSerializerIsRH(serializers.ModelSerializer):
     address = AddressSerializer()
-    company = CompanySerializer(required=True)
+    company_id = serializers.UUIDField(write_only=True)
 
     class Meta:
         model = Account
@@ -53,13 +54,15 @@ class AccountSerializerIsRH(serializers.ModelSerializer):
             "address",
             "is_human_resources",
             "is_superuser",
-            "company"
+            "company",
+            "company_id"
         ]
         read_only_fields = ["id", "is_superuser"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data: dict):
         user = Account.objects.create_user(**validated_data)
+        print(validated_data)
 
         return user
 

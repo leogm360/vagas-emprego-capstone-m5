@@ -30,22 +30,20 @@ class RegisterAccountView(generics.CreateAPIView):
     def perform_create(self, serializer):
         addressserializer = AddressSerializer(data=self.request.data["address"])
         addressserializer.is_valid()
+        ad1 = Address.objects.create(**addressserializer.validated_data)
+        ad1.save()
 
         if self.request.data.get("is_human_resources", False) == False:
-            ad1 = Address.objects.create(**addressserializer.validated_data)
-            ad1.save()
             return serializer.save(address=ad1)
 
         # CRIAR FORMA DE PEDIR O COMPANY ID CASO O USER SEJA DO RH.
-        if self.request.data.get("company", False) == False:
-            return Response({"detail": "required field company."}, status=status.HTTP_400_BAD_REQUEST)
-
-        company = get_object_or_404(Company, pk=self.request.data["company"])
-
         Serializer = serializers.AccountSerializerIsRH(data=self.request.data)
+        Serializer.is_valid(raise_exception=True)
+        
+        company_id = get_object_or_404(Company, pk=self.request.data["company_id"])
 
-        if not Serializer.is_valid():
-            return Response(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Serializer.save(address=ad1, company=company_id)
+
         
 
         
@@ -91,7 +89,7 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrAdmin]
 
     queryset = Account.objects.all()
-    serializer_class = serializers.AccountSerializer
+    serializer_class = serializers.ListAccountsSerializer
 
 
 # GET /api/accounts/<int:pk>/jobs/ - lista todas as vagas nas quais o candidato se inscreveu, somente dono da conta.

@@ -1,6 +1,4 @@
-from django.shortcuts import get_object_or_404
 from rest_framework import generics
-from accounts.mixins import SerializerByMethodMixin
 from accounts.permissions import IsRecruiterOnly, IsRecruiterOwnerOnly
 
 from jobs.serializers import JobSerializer
@@ -14,7 +12,6 @@ from .permissions import CompaniesCustomPermissions, IsRecruiterOrAdmin
 
 
 from jobs.models import Job
-# from jobs.serializers import JobSerializer
 
 class CompanyView(generics.ListCreateAPIView):
     permission_classes = [CompaniesCustomPermissions]
@@ -56,9 +53,8 @@ class CreateJobView(generics.CreateAPIView):
     permission_classes = [IsRecruiterOnly]
 
     def perform_create(self, serializer):
-        company_id = "a8440fba-bde7-4613-ae5f-1ea34960edda"
+        company_id = self.request.user.company.id
         company = Company.objects.get(id=company_id)
-        print(company.__dict__)
         serializer.save(company=company)
 
 class DetailJobView(generics.RetrieveUpdateAPIView):
