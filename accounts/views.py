@@ -6,12 +6,7 @@ from addresses.models import Address
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
 
-from accounts.permissions import (
-    IsCandidateOnly,
-    IsOwnerAccountOnly,
-    IsAdmOnly,
-    IsOwnerOrAdmin,
-)
+from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
 
 from rest_framework.authentication import TokenAuthentication
 from addresses.serializers import AddressSerializer

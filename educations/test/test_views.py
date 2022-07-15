@@ -70,15 +70,33 @@ class EducationViewTest(APITestCase):
         self.assertIn('status_code', res.data)
 
 
-    # def test_get_educations(self):
-    #     self.client.credentials(HTTP_AUTHORIZATION="Token " + self.tokenUser01.key)
-    #     self.client.post('/api/accounts/education/', data=self.education01)
-    #     self.client.post('/api/accounts/education/', data=self.education01)
+    def test_get_educations(self):
+        self.client.credentials(HTTP_AUTHORIZATION="Token " + self.tokenUser01.key)
+        for _ in range(10):
+            self.client.post('/api/accounts/education/', data=self.education01)
+        
+        
+        res_one = self.client.get('/api/accounts/education/')
 
-    #     res = self.client.get('/api/accounts/education/')
+        self.assertEquals(res_one.status_code, status.HTTP_200_OK)
+        self.assertEquals(res_one.data['count'], 10)
+        self.assertTrue(res_one.data["next"])
+        self.assertIsNone(res_one.data["previous"])
 
-    #     self.assertEqual(res.status_code, status.HTTP_200_OK)
-    #     self.assertTrue(len(res.context['results']) == 2)
+        next_page = res_one.data["next"]
+
+        res_two = self.client.get(next_page)
+
+        self.assertEquals(res_two.status_code, status.HTTP_200_OK)
+        self.assertEquals(res_two.data["count"], 10)
+        self.assertIsNone(res_two.data["next"])
+        self.assertTrue(res_two.data["previous"])
+
+        res_page_one = res_one.data["results"]
+        res_page_two = res_two.data["results"]
+
+        self.assertEquals(len(res_page_one + res_page_two), 10)
+
         
     def test_get_education_by_id(self):
         self.client.credentials(HTTP_AUTHORIZATION="Token " + self.tokenUser01.key)

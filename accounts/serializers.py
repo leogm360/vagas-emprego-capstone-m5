@@ -67,19 +67,9 @@ class AccountSerializerIsRH(serializers.ModelSerializer):
 class ListAccountsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = [
-            "id",
-            "email",
-            "first_name",
-            "last_name",
-            "cpf",
-            "gender",
-            "phone",
-            "address",
-            "is_human_resources",
-            "is_superuser",
-            "company_id"
-            ]
+        fields = "__all__"
+        extra_kwargs = {"password": {"write_only": True}}
+
 
 
 class LoginSerializer(serializers.Serializer):
