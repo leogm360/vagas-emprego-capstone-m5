@@ -1,11 +1,14 @@
-from attr import fields
 from rest_framework import serializers
+from addresses.serializers import AddressSerializer
+from companies.serializers import CompanySerializer, CompanyUserSerializer
 
 from educations.serializers import ListEducationSerializer
 
 from .models import Account
 
 class AccountSerializer(serializers.ModelSerializer):
+    address = AddressSerializer()
+
     class Meta:
         model = Account
         fields = [
@@ -17,8 +20,41 @@ class AccountSerializer(serializers.ModelSerializer):
             "cpf",
             "gender",
             "phone",
+            "address",
             "is_human_resources",
             "is_superuser",
+        ]
+        read_only_fields = ["id", "is_superuser"]
+
+        extra_kwargs = {"password": {"write_only": True}}
+
+    def create(self, validated_data: dict):
+        user = Account.objects.create_user(**validated_data)
+
+        return user
+
+
+# Serializer para obrigar a passar a company id
+
+class AccountSerializerIsRH(serializers.ModelSerializer):
+    address = AddressSerializer()
+    company = CompanySerializer(required=True)
+
+    class Meta:
+        model = Account
+        fields = [
+            "id",
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "cpf",
+            "gender",
+            "phone",
+            "address",
+            "is_human_resources",
+            "is_superuser",
+            "company"
         ]
         read_only_fields = ["id", "is_superuser"]
         extra_kwargs = {"password": {"write_only": True}}
@@ -33,6 +69,7 @@ class ListAccountsSerializer(serializers.ModelSerializer):
         model = Account
         fields = "__all__"
         extra_kwargs = {"password": {"write_only": True}}
+
 
 
 class LoginSerializer(serializers.Serializer):

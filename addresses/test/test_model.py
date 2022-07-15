@@ -24,19 +24,29 @@ class AddressModelTest(TestCase):
             country=cls.country,
         )
 
-        def test_zip_code_max_length(self):
-            address = Address.objects.get(id=1)
-            max_length = address._meta.get_field("zip_code").max_length
-            self.assertEquals(max_length, 8)
+    def test_zip_code_max_length(self):
+        address = Address.objects.get(id=1)
+        max_length = address._meta.get_field("zip_code").max_length
 
-        def test_complement_can_be_null(self):
-            ...
+        self.assertEquals(max_length, 8)
 
-        def test_state_max_length(self):
-            ...
+    def test_complement_can_be_null(self):
+        address = Address.objects.get(id=1)
 
-        def test_address_has_information_fields(self):
-            ...
+        self.assertIsNone(address.complement)
 
-        def test_(self):
-            ...
+    def test_state_max_length(self):
+        address = Address.objects.get(id=1)
+        max_length = address._meta.get_field("state").max_length
+
+        self.assertEquals(max_length, 2)
+
+    def test_address_has_information_fields(self):
+        address = Address.objects.get(id=1)
+
+        self.assertEqual(address.zip_code, self.zip_code)
+        self.assertEqual(address.street, self.street)
+        self.assertEqual(address.number, self.number)
+        self.assertEqual(address.city, self.city)
+        self.assertEqual(address.state, self.state)
+        self.assertEqual(address.country, self.country)

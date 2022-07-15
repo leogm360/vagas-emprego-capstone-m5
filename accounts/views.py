@@ -2,10 +2,18 @@ from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.authtoken.models import Token
+from addresses.models import Address 
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
+
 from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly, IsAdmOnly, IsOwnerOnlyCanRUD
+
 from rest_framework.authentication import TokenAuthentication
+from addresses.serializers import AddressSerializer
+from companies.models import Company
+
+from jobs.models import Job
+from jobs.serializers import JobSerializer, UserRegisterJobSerializer
 
 
 from .models import Account
@@ -19,12 +27,35 @@ class RegisterAccountView(generics.CreateAPIView):
     queryset = Account.objects.all()
     serializer_class = serializers.AccountSerializer
 
+    def perform_create(self, serializer):
+        addressserializer = AddressSerializer(data=self.request.data["address"])
+        addressserializer.is_valid()
+
+        if self.request.data.get("is_human_resources", False) == False:
+            ad1 = Address.objects.create(**addressserializer.validated_data)
+            ad1.save()
+            return serializer.save(address=ad1)
+
+        # CRIAR FORMA DE PEDIR O COMPANY ID CASO O USER SEJA DO RH.
+        if self.request.data.get("company", False) == False:
+            return Response({"detail": "required field company."}, status=status.HTTP_400_BAD_REQUEST)
+
+        company = get_object_or_404(Company, pk=self.request.data["company"])
+
+        Serializer = serializers.AccountSerializerIsRH(data=self.request.data)
+
+        if not Serializer.is_valid():
+            return Response(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+
+        
+
+
 
 # GET /api/accounts/ - lista todos os usuários, somente admin.
 class ListAccountsView(generics.ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdmOnly]
-
 
     queryset = Account.objects.all()
     serializer_class = serializers.ListAccountsSerializer
@@ -57,7 +88,7 @@ class LoginAccountsView(APIView):
 
 class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsOwnerOnlyCanRUD]
+    permission_classes = [IsOwnerOrAdmin]
 
     queryset = Account.objects.all()
     serializer_class = serializers.AccountSerializer
@@ -67,13 +98,16 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
 class ListJobsRegistredView(generics.ListAPIView):
     ...
 
+
 # PATCH  /api/accounts/<int:pk>/company/<int:pk>/bind - associa um usuário recrutador a uma empresa, somente usuários recrutadores.
 class AddCompanyToRecruiterView(generics.UpdateAPIView):
     ...
 
+
 # PATCH /api/accounts/<str:email>/recover/ - reativa a conta de um usuário desativado, livre.
 class ActiveAccountView(generics.UpdateAPIView):
     ...
+
 
 # PATCH /api/accounts/<pk:int>/management/activation/ - ativa/desativa conta do usuário, somente admin.
 class ActiveDeactiveAccountView(generics.UpdateAPIView):
@@ -82,16 +116,16 @@ class ActiveDeactiveAccountView(generics.UpdateAPIView):
 
     queryset = Account.objects.all()
     serializer_class = serializers.ActiveDeactiveAccountSerializer
-    
+
 
 # Education Views
+
 
 class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIView):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
     permission_classes = [IsCandidateOnly]
-    
 
     serializer_map = {
         "GET": ListEducationSerializer,
@@ -104,7 +138,10 @@ class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIVi
 
 # List, Patch, Delete Educations From Education_Id
 
-class RetrievePatchEducationView(SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView):
+
+class RetrievePatchEducationView(
+    SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView
+):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
@@ -115,13 +152,15 @@ class RetrievePatchEducationView(SerializerByMethodMixin, generics.RetrieveUpdat
         "PATCH": ListEducationSerializer,
     }
 
+
 # List Educations From User Id
+
 
 class ListEducationsAccount(generics.ListAPIView):
     queryset = Education.objects.all()
     serializer_class = ListEducationSerializer
 
     def get_queryset(self):
-         account = get_object_or_404(Account, pk=self.kwargs["account_id"])
-
-         return Education.objects.filter(account=account)
+        account = get_object_or_404(Account, pk=self.kwargs["account_id"])
+        
+        return Education.objects.filter(account=account)

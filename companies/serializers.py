@@ -1,3 +1,4 @@
+from attr import fields
 from addresses.serializers import AddressSerializer
 from rest_framework import serializers
 
@@ -10,3 +11,9 @@ class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields ="__all__"
+
+class CompanyUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Company
+        fields = "__all__"
