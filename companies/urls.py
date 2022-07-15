@@ -8,5 +8,6 @@ urlpatterns = [
     path("companies/jobs/<int:pk>/", views.DetailJobView().as_view()),
 
     path("companies/", views.CompanyView().as_view()),
+    path("companies/register/", views.CompanyView().as_view()),
     path("companies/<str:pk>/", views.DetailCompanyView().as_view()),
 ]
