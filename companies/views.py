@@ -1,10 +1,16 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
+
 from .models import Company
+
 from .serializers import CompanySerializer
 from addresses.models import Address
 from addresses.serializers import AddressSerializer
 from .permissions import CompaniesCustomPermissions, IsRecruiterOrAdmin
 
+
+from jobs.models import Job
+from jobs.serializers import JobSerializer
 
 class CompanyView(generics.ListCreateAPIView):
     permission_classes = [CompaniesCustomPermissions]

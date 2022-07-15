@@ -12,7 +12,9 @@ urlpatterns = [
     path("accounts/<int:account_id>/education/", views.ListEducationsAccount.as_view()),
 
     path("accounts/<pk>/", views.AccountsDetailsView.as_view()),
-    path("accounts/<pk>/management/activation/", views.ActiveDeactiveAccountView.as_view())
+    path("accounts/<pk>/management/activation/", views.ActiveDeactiveAccountView.as_view()),
+
+    path("accounts/jobs/<int:job_id>/", views.UserRegisterJobView.as_view())
 ]
 
 
