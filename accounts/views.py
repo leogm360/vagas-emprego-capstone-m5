@@ -15,6 +15,7 @@ from accounts.permissions import (
 
 from rest_framework.authentication import TokenAuthentication
 from addresses.serializers import AddressSerializer
+from companies.models import Company
 
 from jobs.models import Job
 from jobs.serializers import JobSerializer, UserRegisterJobSerializer
@@ -35,9 +36,25 @@ class RegisterAccountView(generics.CreateAPIView):
         addressserializer = AddressSerializer(data=self.request.data["address"])
         addressserializer.is_valid()
 
-        ad1 = Address.objects.create(**addressserializer.validated_data)
-        ad1.save()
-        serializer.save(address=ad1)
+        if self.request.data.get("is_human_resources", False) == False:
+            ad1 = Address.objects.create(**addressserializer.validated_data)
+            ad1.save()
+            return serializer.save(address=ad1)
+
+        # CRIAR FORMA DE PEDIR O COMPANY ID CASO O USER SEJA DO RH.
+        if self.request.data.get("company", False) == False:
+            return Response({"detail": "required field company."}, status=status.HTTP_400_BAD_REQUEST)
+
+        company = get_object_or_404(Company, pk=self.request.data["company"])
+
+        Serializer = serializers.AccountSerializerIsRH(data=self.request.data)
+
+        if not Serializer.is_valid():
+            return Response(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+
+        
+
 
 
 # GET /api/accounts/ - lista todos os usuários, somente admin.
