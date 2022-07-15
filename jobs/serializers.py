@@ -1,17 +1,19 @@
-from asyncore import write
 from rest_framework import serializers
 from rest_framework.serializers import SerializerMethodField
 from accounts.serializers import AccountSerializer
+from companies.serializers import CompanyJobSerializer
+
 
 from jobs.models import Job
 
 
 class JobSerializer(serializers.ModelSerializer):
-    # location = SerializerMethodField(read_only=True)
+    location = SerializerMethodField()
+    company = CompanyJobSerializer(read_only=True)
 
     class Meta:
         model = Job
-        fields = ["id", "title", "description", "salary", "location",  "job_type", "regimen_type", "vacancies_count", "subscribers_count", "issued_at", "company_id"]
+        fields = ["id", "title", "description", "salary", "location",  "job_type", "regimen_type", "vacancies_count", "subscribers_count", "issued_at", "company"]
         read_only_fields = [
             "id",
             "subscribers_count",
@@ -20,8 +22,9 @@ class JobSerializer(serializers.ModelSerializer):
             "account"
         ]
 
-    # def get_location(self, address: Address) -> str:
-    #     return Company.address.city
+    def get_location(self, job: Job) -> str:
+        return job.company.address.city
+        
 
 class UserRegisterJobSerializer(serializers.ModelSerializer):
     account = AccountSerializer(read_only=True)

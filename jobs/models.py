@@ -18,7 +18,7 @@ class RegimeChoices(models.TextChoices):
 class Job(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    salary = models.DecimalField(max_digits=5, decimal_places=2)
+    salary = models.DecimalField(max_digits=10, decimal_places=5)
     location = models.CharField(max_length=50)
     job_type = models.CharField(max_length=9, choices=JobChoices.choices)
     regimen_type = models.CharField(

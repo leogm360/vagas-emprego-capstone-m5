@@ -22,9 +22,8 @@ class AccountSerializer(serializers.ModelSerializer):
             "phone",
             "address",
             "is_human_resources",
-            "is_superuser",
         ]
-        read_only_fields = ["id", "is_superuser"]
+        read_only_fields = ["id"]
 
         extra_kwargs = {"password": {"write_only": True}}
 

@@ -17,3 +17,9 @@ class CompanyUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields = "__all__"
+
+class CompanyJobSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Company
+        fields = ["name", "cnpj", "phone"]
