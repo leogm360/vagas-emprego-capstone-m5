@@ -6,6 +6,10 @@ db.sqlite3
 
 .env.example
 
-.gitignore
-
 LICENSE
+
+README.md
+
+schema.yml
+
+insomnia-request-collection.json

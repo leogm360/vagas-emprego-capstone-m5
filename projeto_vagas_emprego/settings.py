@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from os import environ
 from pathlib import Path
+
+import dj_database_url
 
 from .utils import EnvironManager
 
@@ -117,8 +120,19 @@ PROD_DATABASE = {
     }
 }
 
+DATABASE_URL = env.get_var("DATABASE_URL")
+
+if DATABASE_URL:
+    db_from_env = dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=500,
+        ssl_require=True,
+    )
+
+    PROD_DATABASE["default"].update(db_from_env)
+
 DATABASES = (
-    DEV_DATABASE if env.get_var("PROJECT_ENV") == "dev" else PROD_DATABASE
+    PROD_DATABASE if env.get_var("PROJECT_ENV") == "prod" else DEV_DATABASE
 )
 
 
