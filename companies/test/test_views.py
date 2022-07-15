@@ -36,7 +36,7 @@ class CompaniesViewsTest(APITestCase):
 
         cls.company = Company.objects.create(
            name="company2",
-            cnpj="12345678912345", 
+            cnpj="12345678912346", 
             phone="12345678911",
             date_joined=cls.now,
             address= cls.address,
@@ -89,7 +89,7 @@ class CompaniesViewsTest(APITestCase):
 
         self.assertEqual(len(response.data),4) 
 
-    def test_can_list_one_company(self):    
+    def test_can_list_one_company(self):  
         response = self.client.get(f'/api/companies/{self.company2.id}/')
 
         self.assertEqual(response.status_code, 200)
@@ -97,7 +97,7 @@ class CompaniesViewsTest(APITestCase):
         self.assertEqual(len(response.data),6)     
 
     def test_cannot_register_company_without_keys(self):
-        self.client.force_authenticate(user=self.recruiter)
+        self.client.force_authenticate(user=self.admin)
         post_response = self.client.post('/api/companies/',{}, format='json')
 
         self.assertEqual(post_response.status_code, 400)
@@ -146,7 +146,7 @@ class CompaniesViewsTest(APITestCase):
                 "status_code": 403
             })
 
-    def test_recruiter_can_register_company_(self):
+    def test_recruiter_cannot_register_company_(self):
         self.client.force_authenticate(user=self.recruiter)
         post_response = self.client.post('/api/companies/',{
             "name": "company test",
@@ -164,9 +164,14 @@ class CompaniesViewsTest(APITestCase):
         }, format='json')
 
 
-        self.assertEqual(post_response.status_code, 201)
+        self.assertEqual(post_response.status_code, 403)
+        self.assertEquals(post_response.data,{
+                "detail": "You do not have permission to perform this action.",
+                "status": "error",
+                "status_code": 403
+            })
 
-    def test_adm_can_register_company_(self):
+    def test_admin_can_register_company_(self):
         self.client.force_authenticate(user=self.admin)
         post_response = self.client.post('/api/companies/',{
             "name": "company test",
@@ -186,6 +191,17 @@ class CompaniesViewsTest(APITestCase):
 
         self.assertEqual(post_response.status_code, 201)
 
+    def test_admin_can_update_a_company_(self):
+        self.client.force_authenticate(user=self.admin)
+        patch_response = self.client.patch(f'/api/companies/{self.company2.id}/',{
+            "name": "update test"}, format='json')
+        
+        self.assertEqual(patch_response.status_code, 200)
 
+    def test_admin_can_delete_a_company_(self):
+        self.client.force_authenticate(user=self.admin)
+        patch_response = self.client.delete(f'/api/companies/{self.company2.id}/')
+        
+        self.assertEqual(patch_response.status_code, 204)    
 
 
