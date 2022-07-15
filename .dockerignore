@@ -9,3 +9,7 @@ db.sqlite3
 .gitignore
 
 LICENSE
+
+README.md
+
+schema.yml

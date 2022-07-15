@@ -19,13 +19,39 @@ paths:
       - accounts
       security:
       - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedListAccountsList'
+          description: ''
+  /api/accounts/{account_id}/education/:
+    get:
+      operationId: accounts_education_list_2
+      parameters:
+      - in: path
+        name: account_id
+        schema:
+          type: integer
+        required: true
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - accounts
+      security:
+      - tokenAuth: []
       - {}
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedAccountList'
+                $ref: '#/components/schemas/PaginatedListEducationList'
           description: ''
   /api/accounts/{id}/:
     get:
@@ -41,7 +67,6 @@ paths:
       - accounts
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -74,7 +99,6 @@ paths:
         required: true
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -106,7 +130,6 @@ paths:
               $ref: '#/components/schemas/PatchedAccount'
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -127,7 +150,215 @@ paths:
       - accounts
       security:
       - tokenAuth: []
-      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/accounts/{id}/management/activation/:
+    put:
+      operationId: accounts_management_activation_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActiveDeactiveAccount'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ActiveDeactiveAccount'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ActiveDeactiveAccount'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveDeactiveAccount'
+          description: ''
+    patch:
+      operationId: accounts_management_activation_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedActiveDeactiveAccount'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedActiveDeactiveAccount'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedActiveDeactiveAccount'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveDeactiveAccount'
+          description: ''
+  /api/accounts/education/:
+    get:
+      operationId: accounts_education_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - accounts
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedListEducationList'
+          description: ''
+    post:
+      operationId: accounts_education_create
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Education'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Education'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Education'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Education'
+          description: ''
+  /api/accounts/education/{id}/:
+    get:
+      operationId: accounts_education_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this education.
+        required: true
+      tags:
+      - accounts
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEducation'
+          description: ''
+    put:
+      operationId: accounts_education_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this education.
+        required: true
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Education'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Education'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Education'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Education'
+          description: ''
+    patch:
+      operationId: accounts_education_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this education.
+        required: true
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedListEducation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedListEducation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedListEducation'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEducation'
+          description: ''
+    delete:
+      operationId: accounts_education_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this education.
+        required: true
+      tags:
+      - accounts
+      security:
+      - tokenAuth: []
       responses:
         '204':
           description: No response body
@@ -169,6 +400,323 @@ paths:
               schema:
                 $ref: '#/components/schemas/Account'
           description: ''
+  /api/companies/:
+    get:
+      operationId: companies_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - companies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCompanyList'
+          description: ''
+    post:
+      operationId: companies_create
+      tags:
+      - companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Company'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Company'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+          description: ''
+  /api/companies/{id}/:
+    get:
+      operationId: companies_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - companies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+          description: ''
+    put:
+      operationId: companies_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Company'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Company'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+          description: ''
+    patch:
+      operationId: companies_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCompany'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCompany'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCompany'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+          description: ''
+    delete:
+      operationId: companies_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - companies
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/companies/jobs/:
+    get:
+      operationId: companies_jobs_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - companies
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedJobList'
+          description: ''
+  /api/companies/jobs/{id}/:
+    get:
+      operationId: companies_jobs_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - companies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+    put:
+      operationId: companies_jobs_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Job'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Job'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+    patch:
+      operationId: companies_jobs_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedJob'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedJob'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedJob'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /api/companies/jobs/register/:
+    post:
+      operationId: companies_jobs_register_create
+      tags:
+      - companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Job'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Job'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /api/companies/register/:
+    get:
+      operationId: companies_register_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - companies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCompanyList'
+          description: ''
+    post:
+      operationId: companies_register_create
+      tags:
+      - companies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Company'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Company'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+          description: ''
   /api/skills/:
     get:
       operationId: skills_list
@@ -183,7 +731,6 @@ paths:
       - skills
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -209,7 +756,6 @@ paths:
         required: true
       security:
       - tokenAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -230,7 +776,6 @@ paths:
       - skills
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -262,7 +807,6 @@ paths:
         required: true
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -293,7 +837,6 @@ paths:
               $ref: '#/components/schemas/PatchedSkill'
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -313,10 +856,37 @@ paths:
       - skills
       security:
       - tokenAuth: []
-      - {}
       responses:
         '204':
           description: No response body
+  /api/skills/search/:
+    get:
+      operationId: skills_search_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search By Text
+        required: true
+      tags:
+      - skills
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSkillList'
+          description: ''
 components:
   schemas:
     Account:
@@ -347,31 +917,356 @@ components:
         phone:
           type: string
           maxLength: 11
-        is_recruiter:
+        address:
+          $ref: '#/components/schemas/Address'
+        is_human_resources:
           type: boolean
+      required:
+      - address
+      - cpf
+      - email
+      - first_name
+      - gender
+      - id
+      - last_name
+      - password
+      - phone
+    ActiveDeactiveAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        password:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          readOnly: true
+        last_name:
+          type: string
+          readOnly: true
+        cpf:
+          type: string
+          readOnly: true
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          readOnly: true
+        phone:
+          type: string
+          readOnly: true
+        is_human_resources:
+          type: boolean
+          readOnly: true
         is_superuser:
           type: boolean
           readOnly: true
           title: Superuser status
           description: Designates that this user has all permissions without explicitly
             assigning them.
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
       required:
       - cpf
       - email
       - first_name
       - gender
       - id
+      - is_human_resources
       - is_superuser
       - last_name
       - password
       - phone
+    Address:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        zip_code:
+          type: string
+          maxLength: 8
+        street:
+          type: string
+          maxLength: 255
+        number:
+          type: integer
+        complement:
+          type: string
+          nullable: true
+          maxLength: 255
+        city:
+          type: string
+          maxLength: 50
+        state:
+          type: string
+          maxLength: 2
+        country:
+          type: string
+          maxLength: 20
+      required:
+      - city
+      - country
+      - id
+      - number
+      - state
+      - street
+      - zip_code
+    Company:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          maxLength: 255
+        cnpj:
+          type: string
+          maxLength: 14
+        phone:
+          type: string
+          maxLength: 11
+        date_joined:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - address
+      - cnpj
+      - date_joined
+      - id
+      - name
+      - phone
+    CompanyJob:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        cnpj:
+          type: string
+          maxLength: 14
+        phone:
+          type: string
+          maxLength: 11
+      required:
+      - cnpj
+      - name
+      - phone
+    Education:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        institution_name:
+          type: string
+          maxLength: 255
+        course:
+          type: string
+          maxLength: 20
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        certificate_link:
+          type: string
+          maxLength: 255
+        account_id:
+          type: integer
+          readOnly: true
+      required:
+      - account_id
+      - certificate_link
+      - course
+      - end_date
+      - id
+      - institution_name
+      - start_date
     GenderEnum:
       enum:
       - Cisgender
       - Transgender
       - Non Binary
       type: string
-    PaginatedAccountList:
+    Job:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        salary:
+          type: number
+          format: double
+          maximum: 100000
+          minimum: -100000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        location:
+          type: string
+          readOnly: true
+        job_type:
+          $ref: '#/components/schemas/JobTypeEnum'
+        regimen_type:
+          $ref: '#/components/schemas/RegimenTypeEnum'
+        vacancies_count:
+          type: integer
+          minimum: 1
+        subscribers_count:
+          type: integer
+          readOnly: true
+        issued_at:
+          type: string
+          format: date-time
+          readOnly: true
+        company:
+          allOf:
+          - $ref: '#/components/schemas/CompanyJob'
+          readOnly: true
+      required:
+      - company
+      - description
+      - id
+      - issued_at
+      - job_type
+      - location
+      - regimen_type
+      - salary
+      - subscribers_count
+      - title
+      - vacancies_count
+    JobTypeEnum:
+      enum:
+      - CLT
+      - PJ
+      - TEMPORARY
+      type: string
+    ListAccounts:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
+        is_staff:
+          type: boolean
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        cpf:
+          type: string
+          maxLength: 11
+        gender:
+          $ref: '#/components/schemas/GenderEnum'
+        phone:
+          type: string
+          maxLength: 11
+        is_human_resources:
+          type: boolean
+        address:
+          type: integer
+          nullable: true
+        company:
+          type: string
+          format: uuid
+          nullable: true
+        groups:
+          type: array
+          items:
+            type: integer
+          description: The groups this user belongs to. A user will get all permissions
+            granted to each of their groups.
+        user_permissions:
+          type: array
+          items:
+            type: integer
+          description: Specific permissions for this user.
+      required:
+      - cpf
+      - email
+      - first_name
+      - gender
+      - id
+      - last_name
+      - password
+      - phone
+    ListEducation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        institution_name:
+          type: string
+          maxLength: 255
+        course:
+          type: string
+          maxLength: 20
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        certificate_link:
+          type: string
+          maxLength: 255
+      required:
+      - certificate_link
+      - course
+      - end_date
+      - id
+      - institution_name
+      - start_date
+    PaginatedCompanyList:
       type: object
       properties:
         count:
@@ -390,7 +1285,67 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Account'
+            $ref: '#/components/schemas/Company'
+    PaginatedJobList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    PaginatedListAccountsList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAccounts'
+    PaginatedListEducationList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEducation'
     PaginatedSkillList:
       type: object
       properties:
@@ -439,14 +1394,135 @@ components:
         phone:
           type: string
           maxLength: 11
-        is_recruiter:
+        address:
+          $ref: '#/components/schemas/Address'
+        is_human_resources:
           type: boolean
+    PatchedActiveDeactiveAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        password:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          readOnly: true
+        last_name:
+          type: string
+          readOnly: true
+        cpf:
+          type: string
+          readOnly: true
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          readOnly: true
+        phone:
+          type: string
+          readOnly: true
+        is_human_resources:
+          type: boolean
+          readOnly: true
         is_superuser:
           type: boolean
           readOnly: true
           title: Superuser status
           description: Designates that this user has all permissions without explicitly
             assigning them.
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+    PatchedCompany:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          maxLength: 255
+        cnpj:
+          type: string
+          maxLength: 14
+        phone:
+          type: string
+          maxLength: 11
+        date_joined:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedJob:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        salary:
+          type: number
+          format: double
+          maximum: 100000
+          minimum: -100000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        location:
+          type: string
+          readOnly: true
+        job_type:
+          $ref: '#/components/schemas/JobTypeEnum'
+        regimen_type:
+          $ref: '#/components/schemas/RegimenTypeEnum'
+        vacancies_count:
+          type: integer
+          minimum: 1
+        subscribers_count:
+          type: integer
+          readOnly: true
+        issued_at:
+          type: string
+          format: date-time
+          readOnly: true
+        company:
+          allOf:
+          - $ref: '#/components/schemas/CompanyJob'
+          readOnly: true
+    PatchedListEducation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        institution_name:
+          type: string
+          maxLength: 255
+        course:
+          type: string
+          maxLength: 20
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        certificate_link:
+          type: string
+          maxLength: 255
     PatchedSkill:
       type: object
       properties:
@@ -458,6 +1534,12 @@ components:
           maxLength: 50
         description:
           type: string
+    RegimenTypeEnum:
+      enum:
+      - PRESENCIAL
+      - REMOTE
+      - HYBRID
+      type: string
     Skill:
       type: object
       properties:
