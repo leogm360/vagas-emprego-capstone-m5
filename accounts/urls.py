@@ -7,8 +7,6 @@ urlpatterns = [
     path("accounts/", views.ListAccountsView.as_view()),
     path("accounts/login/", views.LoginAccountsView.as_view()),
 
-    # path("accounts/company/<pk>/", views.UserRegisterCompanyView.as_view()), # CRIAR VIEW PARA ASSOCIAR USER COM COMPANY_ID
-
     path("accounts/education/",views.ListCreateEducationsView.as_view()),
     path("accounts/education/<pk>/",views.RetrievePatchEducationView.as_view()),
     path("accounts/<int:account_id>/education/", views.ListEducationsAccount.as_view()),
@@ -16,7 +14,7 @@ urlpatterns = [
     path("accounts/<pk>/", views.AccountsDetailsView.as_view()),
     path("accounts/<pk>/management/activation/", views.ActiveDeactiveAccountView.as_view()),
 
-    path("accounts/jobs/<int:job_id>/", views.UserRegisterJobView.as_view()) # CRIAR VIEW PARA ASSOCIAR USER COM A VAGA JOB
+    # path("accounts/jobs/<int:job_id>/", views.UserRegisterJobView.as_view()) # CRIAR VIEW PARA ASSOCIAR USER COM A VAGA JOB
 ]
 
 
