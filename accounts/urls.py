@@ -14,7 +14,7 @@ urlpatterns = [
     path("accounts/<pk>/", views.AccountsDetailsView.as_view()),
     path("accounts/<pk>/management/activation/", views.ActiveDeactiveAccountView.as_view()),
 
-    # path("accounts/jobs/<int:job_id>/", views.UserRegisterJobView.as_view()) # CRIAR VIEW PARA ASSOCIAR USER COM A VAGA JOB
+    path("accounts/jobs/<int:job_id>/", views.UserRegisterJobView.as_view()) # CRIAR VIEW PARA ASSOCIAR USER COM A VAGA JOB
 ]
 
 
