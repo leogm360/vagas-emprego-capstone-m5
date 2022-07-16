@@ -25,7 +25,6 @@ class Job(models.Model):
         max_length=10, choices=RegimeChoices.choices
     )
     vacancies_count = models.IntegerField(validators=[MinValueValidator(1)])
-    subscribers_count = models.IntegerField(default=0)
     issued_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 

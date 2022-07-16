@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.authtoken.models import Token
+from uritemplate import partial
 from addresses.models import Address 
 from rest_framework.views import APIView, Response, status
 from accounts.mixins import SerializerByMethodMixin
@@ -12,8 +13,8 @@ from rest_framework.authentication import TokenAuthentication
 from addresses.serializers import AddressSerializer
 from companies.models import Company
 
-# from jobs.models import Job
-# from jobs.serializers import JobSerializer, UserRegisterJobSerializer
+from jobs.models import Job
+from jobs.serializers import JobSerializer
 
 
 from .models import Account
@@ -162,3 +163,15 @@ class ListEducationsAccount(generics.ListAPIView):
         account = get_object_or_404(Account, pk=self.kwargs["account_id"])
         
         return Education.objects.filter(account=account)
+
+
+# Job View
+
+class UserRegisterJobView(generics.UpdateAPIView):
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+
+    lookup_url_kwarg = "job_id"
+
+    def perform_update(self, serializer):
+        serializer.save(account=self.request.user)
