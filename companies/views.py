@@ -27,16 +27,18 @@ class CompanyView(generics.ListCreateAPIView):
 
 
 class DetailCompanyView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsRecruiterOrAdmin]
+    permission_classes = [CompaniesCustomPermissions]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
     def perform_update(self, serializer):
-        addressserializer = AddressSerializer(data=self.request.data["address"])
-        addressserializer.is_valid()
-        ad1 = Address.objects.create(**addressserializer.validated_data)
-        ad1.save()
-        serializer.save(address=ad1)
+        if "address" in self.request.data:
+            addressserializer = AddressSerializer(data=self.request.data["address"])
+            addressserializer.is_valid()
+            ad1 = Address.objects.create(**addressserializer.validated_data)
+            ad1.save()
+            serializer.save(address=ad1)
+        serializer.save()     
 
 
 # Jobs View
