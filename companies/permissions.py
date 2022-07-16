@@ -1,23 +1,26 @@
 from rest_framework import permissions
 
+from companies.models import Company
 
-class CompaniesCustomPermissions(permissions.BasePermission):
 
+class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
-        if request.method in  permissions.SAFE_METHODS:
+        if request.method in permissions.SAFE_METHODS:
             return True
-
         return request.user.is_superuser
 
 
-class IsRecruiterOrAdmin(permissions.BasePermission):
+class IsCompanyRecruiterOrAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user.is_authenticated:
             return False
+        return request.user.is_superuser or request.user.is_human_resources
 
-        return request.user.is_superuser
+    def has_object_permission(self, request, view, obj: Company):
 
-    # Esperando incluir company_id no usuário Recruiter, para poder terminar permission
-
-    # def has_object_permission(self, request, view, obj: Company):
-    #     return obj.id == request.user
+        if not request.user.is_authenticated:
+            return False
+        elif request.user.is_superuser:
+            return True
+        elif obj.id == request.user.company.id:
+            return True
