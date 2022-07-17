@@ -4,52 +4,32 @@ from django_filters.rest_framework import FilterSet, CharFilter, NumberFilter, D
 
 from .models import Job
 
-"""
-PELO QUE VI NA DOC, NÃO É POSSIVEL COLOCAR VARIAS CLASSES DE FILTER
-NO PARAMETRO filterset_class, SOMENTE NO PARAMETRO filterset_fields, 
-POREM ACREDITO QUE SE VISERMOS TODOS OS FILTERS EM UMA CLASS, FUNCIONARIA,
-ACREDITO...
-
-DOC django-filters:
-https://django-filter.readthedocs.io/en/stable/guide/rest_framework.html#adding-a-filterset-with-filterset-class
-
-
-FILTROS TODO:
-
-GET /api/jobs/search?issued=oldest
-GET /api/jobs/search?type=presential | hybrid | remote
-GET /api/jobs/search?vacancies=1
-GET /api/jobs/search?subscribers=1
-GET /api/jobs/search?salary=3567.29
-GET /api/jobs/search?egt=true | elt=true | eql=true
-GET /api/jobs/search?location=RJ
-GET /api/jobs/search?skills=Django
-GET /api/jobs/search?q=’desenvolvedor fullstack junior’ V
-
-"""
-# GET /api/jobs/search?q=’desenvolvedor fullstack junior’
 class JobsFilter(FilterSet):
+    # GET /api/jobs/search?q=’desenvolvedor fullstack junior’
     q = CharFilter(
         method="filter_by_text", label="Search By Text", required=True
     )
+    # GET /api/jobs/search?issued=oldest
+    issued = DateTimeFilter(field_name='issued_at', lookup_expr='gte')
+    # GET /api/jobs/search?type=presential | hybrid | remote
+    type = CharFilter(field_name='job_type', lookup_expr='iexact')
+    # GET /api/jobs/search?vacancies=1
+    vacancies = NumberFilter(field_name='vacancies_count', lookup_expr='lte')
+    # GET /api/jobs/search?subscribers=1
+    subscribes = NumberFilter(field_name='account__id', lookup_expr='icontains')
 
-    issed = DateTimeFilter()
-
-    type = CharFilter()
-
-    vacancies = NumberFilter()
-
-    subscribes = NumberFilter()
-
-
+    """
+    GET /api/jobs/search?salary=3567.29
+    GET /api/jobs/search?location=RJ
+    GET /api/jobs/search?skills=Django
+    """
     class Meta:
         model = Job
-        fields = [
-            "q", 
-            "issed", 
-            "type", 
-            "vacancies", 
-            "subscribes", 
+        fields = [ 
+            "issed_at", 
+            "job_type", 
+            "vacancies_count", 
+            "account", 
             "salary", 
             "location", 
             "skills"
