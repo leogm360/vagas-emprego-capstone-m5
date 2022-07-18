@@ -8,13 +8,14 @@ from .models import Company
 from .serializers import CompanySerializer
 from addresses.models import Address
 from addresses.serializers import AddressSerializer
-from .permissions import CompaniesCustomPermissions, IsRecruiterOrAdmin
+from .permissions import IsCompanyRecruiterOrAdmin, IsAdminOrReadOnly
 
 
 from jobs.models import Job
 
+
 class CompanyView(generics.ListCreateAPIView):
-    permission_classes = [CompaniesCustomPermissions]
+    permission_classes = [IsAdminOrReadOnly]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
@@ -27,7 +28,7 @@ class CompanyView(generics.ListCreateAPIView):
 
 
 class DetailCompanyView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [CompaniesCustomPermissions]
+    permission_classes = [IsCompanyRecruiterOrAdmin]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
@@ -38,10 +39,11 @@ class DetailCompanyView(generics.RetrieveUpdateDestroyAPIView):
             ad1 = Address.objects.create(**addressserializer.validated_data)
             ad1.save()
             serializer.save(address=ad1)
-        serializer.save()     
+        serializer.save()
 
 
 # Jobs View
+
 
 class ListJobView(generics.ListAPIView):
     queryset = Job.objects.all()
@@ -59,9 +61,9 @@ class CreateJobView(generics.CreateAPIView):
         company = Company.objects.get(id=company_id)
         serializer.save(company=company)
 
+
 class DetailJobView(generics.RetrieveUpdateAPIView):
     queryset = Job.objects.all()
     serializer_class = JobCreateSerializer
 
     permission_classes = [IsRecruiterOwnerOnly]
-
