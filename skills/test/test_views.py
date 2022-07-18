@@ -1,3 +1,5 @@
+from accounts.models import Account
+from rest_framework.authtoken.models import Token
 from rest_framework.status import (
     HTTP_200_OK,
     HTTP_201_CREATED,
@@ -39,6 +41,23 @@ class SkillViewTest(APITestCase):
             "status": "error",
             "status_code": HTTP_400_BAD_REQUEST,
         }
+
+        superuser = Account.objects.create_superuser(
+            **{
+                "email": "admin@email.com",
+                "first_name": "Admin",
+                "last_name": "User",
+                "gender": "Cisgender",
+                "password": "134679@#Adm",
+            }
+        )
+
+        token, _ = Token.objects.get_or_create(user=superuser)
+
+        cls.token = token.key
+
+    def setUp(self) -> None:
+        self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token}")
 
     def test_view_skill_create_success(self):
         res = self.client.post("/api/skills/", self.skill_data, format="json")
