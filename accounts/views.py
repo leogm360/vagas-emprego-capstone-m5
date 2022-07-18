@@ -173,5 +173,7 @@ class UserRegisterJobView(generics.UpdateAPIView):
 
     lookup_url_kwarg = "job_id"
 
+    permission_classes = [IsCandidateOnly]
+
     def perform_update(self, serializer):
         serializer.save(account=self.request.user)
