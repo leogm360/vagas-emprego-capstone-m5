@@ -1,54 +1,69 @@
-from django.contrib.auth import authenticate
-from django.shortcuts import get_object_or_404
-from rest_framework import generics
-from rest_framework.authtoken.models import Token
-from uritemplate import partial
-from addresses.models import Address 
-from rest_framework.views import APIView, Response, status
-from accounts.mixins import SerializerByMethodMixin
-
-from accounts.permissions import IsCandidateOnly, IsOwnerAccountOnly, IsAdmOnly, IsOwnerOrAdmin
-
-from rest_framework.authentication import TokenAuthentication
 from addresses.serializers import AddressSerializer
 from companies.models import Company
-
-from jobs.models import Job
-from jobs.serializers import JobSerializer
-
-
-from .models import Account
+from django.contrib.auth import authenticate
+from django.shortcuts import get_object_or_404
 from educations.models import Education
 from educations.serializers import EducationSerializer, ListEducationSerializer
+from jobs.models import Job
+from jobs.serializers import JobSerializer
+from rest_framework import generics
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.models import Token
+from rest_framework.views import APIView, Response, status
+
+from accounts.mixins import (
+    SerializerByAccountTypeMixin,
+    SerializerByMethodMixin,
+)
+from accounts.permissions import (
+    IsAdmOnly,
+    IsCandidateOnly,
+    IsOwnerAccountOnly,
+    IsOwnerOrAdmin,
+)
+
 from . import serializers
+from .models import Account
 
 
 # POST /api/accounts/register/ - registra um usuário.
-class RegisterAccountView(generics.CreateAPIView):
+class RegisterAccountView(SerializerByAccountTypeMixin, generics.CreateAPIView):
     queryset = Account.objects.all()
-    serializer_class = serializers.AccountSerializer
+    serializer_map = {
+        "CANDIDATE": serializers.AccountSerializer,
+        "HUMAN_RESOURCES": serializers.AccountSerializerIsRH,
+    }
+
+    def create_address(self):
+        address_data = self.request.data.get("address")
+
+        serializer = AddressSerializer(data=address_data)
+
+        serializer.is_valid()
+
+        serializer.save()
+
+        return serializer.instance
+
+    def perform_for_candidate(self, address, serializer):
+        serializer.save(address=address)
+
+    def perform_for_human_resources(self, address, serializer):
+        company_id = self.request.data.get("company_id")
+
+        company = get_object_or_404(Company, pk=company_id)
+
+        serializer.save(address=address, company=company)
 
     def perform_create(self, serializer):
-        addressserializer = AddressSerializer(data=self.request.data["address"])
-        addressserializer.is_valid()
-        ad1 = Address.objects.create(**addressserializer.validated_data)
-        ad1.save()
+        address = self.create_address()
 
-        if self.request.data.get("is_human_resources", False) == False:
-            return serializer.save(address=ad1)
+        is_human_resources = self.request.data.get("is_human_resources", False)
 
-        # CRIAR FORMA DE PEDIR O COMPANY ID CASO O USER SEJA DO RH.
-        Serializer = serializers.AccountSerializerIsRH(data=self.request.data)
-        Serializer.is_valid(raise_exception=True)
-        
-        company_id = get_object_or_404(Company, pk=self.request.data["company_id"])
-
-        return Serializer.save(address=ad1, company=company_id)
-
-        
-
-        
-
+        if is_human_resources:
+            self.perform_for_human_resources(address, serializer)
+        else:
+            self.perform_for_candidate(address, serializer)
 
 
 # GET /api/accounts/ - lista todos os usuários, somente admin.
@@ -120,7 +135,9 @@ class ActiveDeactiveAccountView(generics.UpdateAPIView):
 # Education Views
 
 
-class ListCreateEducationsView(SerializerByMethodMixin, generics.ListCreateAPIView):
+class ListCreateEducationsView(
+    SerializerByMethodMixin, generics.ListCreateAPIView
+):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
@@ -161,11 +178,12 @@ class ListEducationsAccount(generics.ListAPIView):
 
     def get_queryset(self):
         account = get_object_or_404(Account, pk=self.kwargs["account_id"])
-        
+
         return Education.objects.filter(account=account)
 
 
 # Job View
+
 
 class UserRegisterJobView(generics.UpdateAPIView):
     queryset = Job.objects.all()

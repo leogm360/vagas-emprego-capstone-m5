@@ -1,11 +1,10 @@
-from asyncore import write
-from rest_framework import serializers
 from addresses.serializers import AddressSerializer
 from companies.serializers import CompanySerializer, CompanyUserSerializer
-
 from educations.serializers import ListEducationSerializer
+from rest_framework import serializers
 
 from .models import Account
+
 
 class AccountSerializer(serializers.ModelSerializer):
     address = AddressSerializer()
@@ -22,9 +21,8 @@ class AccountSerializer(serializers.ModelSerializer):
             "gender",
             "phone",
             "address",
-            "is_human_resources"
+            "is_human_resources",
         ]
-        read_only_fields = ["id"]
 
         extra_kwargs = {"password": {"write_only": True}}
 
@@ -35,6 +33,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
 
 # Serializer para obrigar a passar a company id
+
 
 class AccountSerializerIsRH(serializers.ModelSerializer):
     address = AddressSerializer()
@@ -55,9 +54,9 @@ class AccountSerializerIsRH(serializers.ModelSerializer):
             "is_human_resources",
             "is_superuser",
             "company",
-            "company_id"
+            "company_id",
         ]
-        read_only_fields = ["id", "is_superuser"]
+        read_only_fields = ["is_superuser"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data: dict):
@@ -66,12 +65,12 @@ class AccountSerializerIsRH(serializers.ModelSerializer):
 
         return user
 
+
 class ListAccountsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = "__all__"
         extra_kwargs = {"password": {"write_only": True}}
-
 
 
 class LoginSerializer(serializers.Serializer):
@@ -91,7 +90,7 @@ class AccountEducationsSerializer(serializers.ModelSerializer):
             "cpf",
             "educations",
         ]
-        read_only_fields = ['educations']
+        read_only_fields = ["educations"]
 
 
 class ActiveDeactiveAccountSerializer(serializers.ModelSerializer):
@@ -108,7 +107,7 @@ class ActiveDeactiveAccountSerializer(serializers.ModelSerializer):
             "phone",
             "is_human_resources",
             "is_superuser",
-            "is_active"
+            "is_active",
         ]
         read_only_fields = [
             "id",
