@@ -1,0 +1,3054 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-07-18T15:40:12.369Z",
+  "__export_source": "insomnia.desktop.app:v2022.4.2",
+  "resources": [
+    {
+      "_id": "req_b55fc261f4ba4a61adf866f671342574",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157098337,
+      "created": 1657930971790,
+      "url": "{{ _.base_url }}/accounts/register/",
+      "name": "Create Candidate User [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"testuser1@email.com\",\n\t\"password\": \"123456789\",\n\t\"first_name\": \"Test\",\n\t\"last_name\": \"User 1\",\n\t\"cpf\": \"11111111111\",\n\t\"gender\": \"Cisgender\",\n\t\"phone\": \"11911111111\",\n\t\"address\": {\n\t\t\"zip_code\": \"26380354\",\n\t\t\"street\":\"Rua Boa Esperança\",\n\t\t\"number\": 234,\n\t\t\"complement\": null,\n\t\t\"city\": \"Rio de Janeiro\",\n\t\t\"state\": \"RJ\",\n\t\t\"country\": \"Brasil\"\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0c7df2eed7ea4231a41ede61444995d9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930971790,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "parentId": "fld_b94ec39dbe024d19b425e5fd926c9d90",
+      "modified": 1657928021750,
+      "created": 1657927786900,
+      "name": "Success",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927791776,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_b94ec39dbe024d19b425e5fd926c9d90",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1657927598537,
+      "created": 1657927555566,
+      "name": "Accounts",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927594708,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "parentId": null,
+      "modified": 1657927546988,
+      "created": 1657927546988,
+      "name": "Vagas Emprego",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_3f4bbf4f482341f588a0f7a3d860f9d3",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157155193,
+      "created": 1657931229447,
+      "url": "{{ _.base_url }}/accounts/register/",
+      "name": "Create Recruiter User [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"testuser2@email.com\",\n\t\"password\": \"123456789\",\n\t\"first_name\": \"Test\",\n\t\"last_name\": \"User 2\",\n\t\"cpf\": \"22222222222\",\n\t\"gender\": \"Cisgender\",\n\t\"phone\": \"22922222222\",\n\t\"address\": {\n\t\t\"zip_code\": \"5842383\",\n\t\t\"street\":\"Rua Argentina Maria Oliveira\",\n\t\t\"number\": 23,\n\t\t\"complement\": null,\n\t\t\"city\": \"Campina Grande\",\n\t\t\"state\": \"PB\",\n\t\t\"country\": \"Brasil\"\n\t},\n\t\"is_human_resources\": true,\n\t\"company_id\": \"{{ _.company_id }}\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_468a94535ee74f9eb628aa36e66888a1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930970910.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ede1d580f5fb429bb8e27ce8fe4d9226",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157241832,
+      "created": 1657931641875,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Login Candidate [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"testuser1@email.com\",\n\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_495dffdee2ee4ea983b159e86953ae27"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930970470.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0955f71650d3409ca2853e37f1ba5853",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157244175,
+      "created": 1657931644627,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Login Recruiter [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"testuser2@email.com\",\n\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a05c4b4f11924918a1ef4201ab507a59"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930970250.875,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_91cd06441b1547439cac2233486a46ae",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157096405,
+      "created": 1657931648115,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Login Admin [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"admin@email.com\",\n\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_801224c8a74940cc9f044748ddebe381"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930970140.9375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_69e4767e4840433bba7e0ef092a5a214",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157247289,
+      "created": 1657930970031,
+      "url": "{{ _.base_url }}/accounts/",
+      "name": "List Users [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_5a0977251d6947a7bf0ea35038dc9598",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930970031,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00fea0a1335941a8974717b88b61ea81",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157251862,
+      "created": 1657930968662,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Retrieve User [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1fcdea28ad4c4f0ca533ebcf06b17017",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        },
+        {
+          "id": "pair_1096357ed00e4a08bfc986c8fce1ca31",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930968662,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9f045758c00e4be2bb034b7968e9509b",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157256787,
+      "created": 1657930967078,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Update User [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"last_name\": \"Stone\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_696436b691b84dc7a2014ee5beaca64b"
+        },
+        {
+          "id": "pair_f9973925a9df420cb31561b7310c2d08",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967078,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_86153c3b519547979e270c6205689559",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157271660,
+      "created": 1657931526821,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/management/activation/",
+      "name": "Activate/Deactivate User [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"is_active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e1fcf15e5a7249a782376eafae53720c"
+        },
+        {
+          "id": "pair_ed7daae6ee01487ca44d03980a3ef2f0",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930966066,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e394815a42714a468c37c5273009fc6a",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658158253655,
+      "created": 1658157303984,
+      "url": "{{ _.base_url }}/accounts/jobs/{{ _.job_id }}/",
+      "name": "Subscribe To Job [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_c306e005aaf4436db66fee52788635e4",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930965560,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_85747888b1cc4bc49542624ca447086a",
+      "parentId": "fld_068a33fed5604f28aaeabc9411c52af6",
+      "modified": 1658157275894,
+      "created": 1657930965054,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Destroy User [204]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_779755d70e544b74b84510cb2b1526ec",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930965054,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9c5da364657846db81669db813ca9237",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997690266,
+      "created": 1657996680186,
+      "url": "{{ _.base_url }}/accounts/register/",
+      "name": "Create User Missing Data [400]",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{\n\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0c7df2eed7ea4231a41ede61444995d9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967870,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "parentId": "fld_b94ec39dbe024d19b425e5fd926c9d90",
+      "modified": 1657927791726,
+      "created": 1657927791726,
+      "name": "Fail",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927791726,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_2daa00a291544024ba40e56166b97fac",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997691416,
+      "created": 1657996963661,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Create Login Invalid Email/Password [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"testuser1@email.com\",\n\t\"password\": \"12345678\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_495dffdee2ee4ea983b159e86953ae27"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967820,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f9d3502fcc6045fea0b4b6efce36c809",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997298957,
+      "created": 1657997092213,
+      "url": "{{ _.base_url }}/accounts/",
+      "name": "List Users Missing Credentials [401]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657930967770,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_dc399217a631444b9cfe78874c9e39c5",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997331259,
+      "created": 1657997276428,
+      "url": "{{ _.base_url }}/accounts/",
+      "name": "List Users Missing Unauthorized [401]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_5a0977251d6947a7bf0ea35038dc9598",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967757.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0dbd09df07e0438bb4f27de3f18ba320",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997597782,
+      "created": 1657997099063,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Retrieve User Missing Credentials [401]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657930967720,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7208499bb65841cd8236454f55f4e143",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997618763,
+      "created": 1657997401613,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Retrieve User Unauthorized [403]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1fcdea28ad4c4f0ca533ebcf06b17017",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        },
+        {
+          "id": "pair_1096357ed00e4a08bfc986c8fce1ca31",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967695,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6e4224f8206747a2b3a9b921fb9c29f9",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1658001604397,
+      "created": 1657997404168,
+      "url": "{{ _.base_url }}/accounts/{{ _.invalid_id }}/",
+      "name": "Retrieve User Not Found [404]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1fcdea28ad4c4f0ca533ebcf06b17017",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        },
+        {
+          "id": "pair_1096357ed00e4a08bfc986c8fce1ca31",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967682.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_871b515ac40c4ff383ceb05cd1a2e4ed",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997790985,
+      "created": 1657997106158,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Update User Missing Credentials [401]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"last_name\": \"Stone\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_696436b691b84dc7a2014ee5beaca64b"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967670,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9e340618b3d0487fbd5860e0b1b64c00",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997803918,
+      "created": 1657997700301,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Update User Unauthorized [403]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"last_name\": \"Stone\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_696436b691b84dc7a2014ee5beaca64b"
+        },
+        {
+          "id": "pair_f9973925a9df420cb31561b7310c2d08",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967663.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_77b9f8ebfc614e1cae5553838fc03f5f",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1658001613804,
+      "created": 1657997702664,
+      "url": "{{ _.base_url }}/accounts/{{ _.invalid_id }}/",
+      "name": "Update User Not Found [404]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"last_name\": \"Stone\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_696436b691b84dc7a2014ee5beaca64b"
+        },
+        {
+          "id": "pair_f9973925a9df420cb31561b7310c2d08",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967660.625,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e82f03d390d74c568d3a12fc3ae290b2",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997843111,
+      "created": 1657997111367,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/management/activation/",
+      "name": "Activate/Deactivate User Missing Credentials [401]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"is_active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e1fcf15e5a7249a782376eafae53720c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967657.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6cd847412efb44edb9cb1c3c3a81626f",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997921903,
+      "created": 1657997706578,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/management/activation/",
+      "name": "Activate/Deactivate User Unauthorized [403]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"is_active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e1fcf15e5a7249a782376eafae53720c"
+        },
+        {
+          "id": "pair_ed7daae6ee01487ca44d03980a3ef2f0",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967651.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_45d74939ec2347399b59d867586d5ba5",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657997932773,
+      "created": 1657997709416,
+      "url": "{{ _.base_url }}/accounts/{{ _.invalid_did }}/management/activation/",
+      "name": "Activate/Deactivate User Not Found[404]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"is_active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e1fcf15e5a7249a782376eafae53720c"
+        },
+        {
+          "id": "pair_ed7daae6ee01487ca44d03980a3ef2f0",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967648.125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0c84ed9c8e464e878a594a9c8bd59b57",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657998073775,
+      "created": 1657997118496,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Destroy User Missing Credentials [401]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657930967645,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_46ebcef02774457ca117d6d95d9ab22d",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1657998085003,
+      "created": 1657997712485,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Destroy User Unauthorized [403]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_779755d70e544b74b84510cb2b1526ec",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967361.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c5ef82278fd14a338a74e903c44891a8",
+      "parentId": "fld_abce3b2076164ff4a98ae477d1880beb",
+      "modified": 1658001622307,
+      "created": 1657997714929,
+      "url": "{{ _.base_url }}/accounts/{{ _.invalid_id }}/",
+      "name": "Destroy User Not Found [404]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_779755d70e544b74b84510cb2b1526ec",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657930967219.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0273b50a6c874f1eb7a83f361e9c2382",
+      "parentId": "fld_826ec543467d47b2b287121824152cca",
+      "modified": 1658004905088,
+      "created": 1657998564618,
+      "url": "{{ _.base_url }}/accounts/education/",
+      "name": "Create Education [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"institution_name\": \"Kenzie Academy\",\n  \"course\": \"Full Stack\",\n  \"start_date\": \"2021-09-14\",\n  \"end_date\": \"2022-09-14\",\n  \"certificate_link\": \"https://www.google.com/search?q=Desactivate&oq=Desactivate&aqs=chrome..69i57j69i59.771j0j4&sourceid=chrome&ie=UTF-8\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e6850b9256c548b5a6c797aa7dd24a78"
+        },
+        {
+          "id": "pair_9e6b4e94abde422aa08a808844f64cbe",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998564618,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_826ec543467d47b2b287121824152cca",
+      "parentId": "fld_0d65544147714e91b73ff89288f96a6d",
+      "modified": 1657928018831,
+      "created": 1657927802074,
+      "name": "Success",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927806442,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_0d65544147714e91b73ff89288f96a6d",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1657927606353,
+      "created": 1657927574592,
+      "name": "Educations",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927594701.75,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_d1a970110c60477698fcdb6e9250fad5",
+      "parentId": "fld_826ec543467d47b2b287121824152cca",
+      "modified": 1657999384676,
+      "created": 1657998562419,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/education/",
+      "name": "List User Education [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657998562419,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4f9df06282814a52b9cca4e628809d1f",
+      "parentId": "fld_826ec543467d47b2b287121824152cca",
+      "modified": 1657999394621,
+      "created": 1657998556552,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.education_id }}/",
+      "name": "Retrieve User Education [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657998561118,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_592af7ed9df04cc29c641cfbf2002649",
+      "parentId": "fld_826ec543467d47b2b287121824152cca",
+      "modified": 1658004907840,
+      "created": 1657998559817,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.education_id }}/",
+      "name": "Update Education [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"certificate_link\": \"olá mundo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_83d4ed89004b4c12a65e7e6f547d47d6"
+        },
+        {
+          "id": "pair_273fecba75ec483392c557a77a5b7fbe",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998559817,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8fb42095d3ca4d36ba7b7aa505429602",
+      "parentId": "fld_826ec543467d47b2b287121824152cca",
+      "modified": 1658004908633,
+      "created": 1657998558668,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.education_id }}/",
+      "name": "Destroy Education [204]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_21357c2d6b6f4f4eb4d6a90e9c67629b",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998558668,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_13a9e62b570b4a70bd0658978a09e850",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1657999699426,
+      "created": 1657999602262,
+      "url": "{{ _.base_url }}/accounts/education/",
+      "name": "Create Education Missing Data [400]",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{\n\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e6850b9256c548b5a6c797aa7dd24a78"
+        },
+        {
+          "id": "pair_9e6b4e94abde422aa08a808844f64cbe",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998563568.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "parentId": "fld_0d65544147714e91b73ff89288f96a6d",
+      "modified": 1657927806392,
+      "created": 1657927806392,
+      "name": "Fail",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927806392,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_f175f1be6ece449ab4f0c9ac598d4f63",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1657999700536,
+      "created": 1657999593139,
+      "url": "{{ _.base_url }}/accounts/education/",
+      "name": "Create Education Missing Credentials [401]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"institution_name\": \"Kenzie Academy\",\n  \"course\": \"Full Stack\",\n  \"start_date\": \"2021-09-14\",\n  \"end_date\": \"2022-09-14\",\n  \"certificate_link\": \"https://www.google.com/search?q=Desactivate&oq=Desactivate&aqs=chrome..69i57j69i59.771j0j4&sourceid=chrome&ie=UTF-8\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e6850b9256c548b5a6c797aa7dd24a78"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998563518.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d641cba31dc843cbb0883acb72594365",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1657999842297,
+      "created": 1657999705461,
+      "url": "{{ _.base_url }}/accounts/{{ _.invalid_did }}/education/",
+      "name": "List User Education Not Found [404]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657998563468.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a3ffc69fe46c465b9e3cc91fc51b934a",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1658001558555,
+      "created": 1657999861624,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.invalid_id }}/",
+      "name": "Retrieve User Education Not Found [404]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657998563418.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b3283eedba344bb2af88ba551a9aa24b",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1658000310338,
+      "created": 1657999878760,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.education_id }}/",
+      "name": "Update Education Missing Credentials [401]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"certificate_link\": \"olá mundo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_83d4ed89004b4c12a65e7e6f547d47d6"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998563393.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_07cb92da1b1147069f39416fe1d8ca55",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1658000335699,
+      "created": 1657999908679,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.education_id }}/",
+      "name": "Update Education Unauthorized [403]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"certificate_link\": \"olá mundo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_83d4ed89004b4c12a65e7e6f547d47d6"
+        },
+        {
+          "id": "pair_273fecba75ec483392c557a77a5b7fbe",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998563381,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9840d7dcea3f4c008871debaff7957f7",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1658001570427,
+      "created": 1657999911335,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.invalid_id }}/",
+      "name": "Update Education Not Found [404]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"certificate_link\": \"olá mundo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_83d4ed89004b4c12a65e7e6f547d47d6"
+        },
+        {
+          "id": "pair_273fecba75ec483392c557a77a5b7fbe",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998563374.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_cfea4911a1a142e79879335618918a23",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1658000358212,
+      "created": 1657999894764,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.education_id }}/",
+      "name": "Destroy Education Missing Credentials [401]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657998563368.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_eb731be5f5ef4754a347362dbd590dd8",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1658000370551,
+      "created": 1657999915559,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.education_id }}/",
+      "name": "Destroy Education Unauthorized [403]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_21357c2d6b6f4f4eb4d6a90e9c67629b",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998562893.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_17b999e6420649fa82dc3a9226c69255",
+      "parentId": "fld_0bda9d5b67e6405e9b53665bc37750c0",
+      "modified": 1658001579981,
+      "created": 1657999919959,
+      "url": "{{ _.base_url }}/accounts/education/{{ _.invalid_id }}/",
+      "name": "Destroy Education Not Found [404]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_21357c2d6b6f4f4eb4d6a90e9c67629b",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657998562656.375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a55981ef2891453bbaf9037adfa2bc56",
+      "parentId": "fld_b55a84e9484b475c93775cbc30c7e790",
+      "modified": 1658158665360,
+      "created": 1657981390874,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "Create Skill [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"HTML5\",\n\t\"description\": \"Linguagem de marcação muito utilizada no desenvolvimento web.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_efa5a476de764448a961c011899f0d8c"
+        },
+        {
+          "id": "pair_8562f331001c4f1eb5b9df94e5bbed30",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657981390874,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_b55a84e9484b475c93775cbc30c7e790",
+      "parentId": "fld_b57a5dc706b449e98058509510da455b",
+      "modified": 1657928016144,
+      "created": 1657927825540,
+      "name": "Success",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927829675,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_b57a5dc706b449e98058509510da455b",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1657927604517,
+      "created": 1657927580961,
+      "name": "Skills",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927594695.5,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_21f6e893564649a5b1e4a567e8222237",
+      "parentId": "fld_b55a84e9484b475c93775cbc30c7e790",
+      "modified": 1658000962976,
+      "created": 1658000538044,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "List Skill [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657956181332,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f991c2037d6745809e26e69c9cb0921c",
+      "parentId": "fld_b55a84e9484b475c93775cbc30c7e790",
+      "modified": 1658001094546,
+      "created": 1658000540650,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Retrieve Skill [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657943576561,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a94adeee17a6449b94e32c5678345c65",
+      "parentId": "fld_b55a84e9484b475c93775cbc30c7e790",
+      "modified": 1658004564214,
+      "created": 1658000543025,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Update Skill [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"description\": \"Linguagem de marcação muito utilizada no desenvolvimento web. Ela é utilizada para estruturar documentos que, posteriormente, serão renderizados em tela.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_450e491fd0784541a47523ba3b54dd1c"
+        },
+        {
+          "id": "pair_8ac0ddcf029643fd9186e6e50c61f87b",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657937274175.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_536d150900244470a0bb87c930553c2f",
+      "parentId": "fld_b55a84e9484b475c93775cbc30c7e790",
+      "modified": 1658004890736,
+      "created": 1658004723380,
+      "url": "{{ _.base_url }}/accounts/skills/{{ _.skill_id }}/",
+      "name": "Assign Skill [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": { "mimeType": "application/json", "text": "{\n\t\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_696436b691b84dc7a2014ee5beaca64b"
+        },
+        {
+          "id": "pair_f9973925a9df420cb31561b7310c2d08",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657937274150.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9ffff0e5a3484bd5b85ab5ec474b0a5b",
+      "parentId": "fld_b55a84e9484b475c93775cbc30c7e790",
+      "modified": 1658004591664,
+      "created": 1658004559200,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Destroy Skill [204]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_35563e43ef3d43f5b3a207ac363e9eba",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657937274125.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2300592b4ab548a1b54faa484e8b8cff",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001404666,
+      "created": 1658001256326,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "Create Skill Missing Data [400]",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{\n\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_efa5a476de764448a961c011899f0d8c"
+        },
+        {
+          "id": "pair_8562f331001c4f1eb5b9df94e5bbed30",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657968786103,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "parentId": "fld_b57a5dc706b449e98058509510da455b",
+      "modified": 1657927829625,
+      "created": 1657927829625,
+      "name": "Fail",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927829625,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_e49fec885136447c93316e02fd46c19d",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001409209,
+      "created": 1658001281645,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "Create Skill Missing Credentials [401]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"HTML5\",\n\t\"description\": \"Linguagem de marcação muito utilizada no desenvolvimento web.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_efa5a476de764448a961c011899f0d8c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657968786078,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0b545d56c12f4017987edf4af474329e",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001473893,
+      "created": 1658001284662,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "Create Skill Unauthorized [403]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"HTML5\",\n\t\"description\": \"Linguagem de marcação muito utilizada no desenvolvimento web.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_efa5a476de764448a961c011899f0d8c"
+        },
+        {
+          "id": "pair_8562f331001c4f1eb5b9df94e5bbed30",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657968786065.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_aa437d38c4ed4a1eb4bd01271d327f93",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001540872,
+      "created": 1658001259292,
+      "url": "{{ _.base_url }}/skills/{{ _.invalid_id }}/",
+      "name": "Retrieve Skill Not Found [404]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657968786053,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e7bc2cd8db544550ae45986b3826f34e",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001918108,
+      "created": 1658001265572,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Update Skill Missing Credentials [401]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"description\": \"Linguagem de marcação muito utilizada no desenvolvimento web. Ela é utilizada para estruturar documentos que, posteriormente, serão renderizados em tela.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_450e491fd0784541a47523ba3b54dd1c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657968786003,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_229f783f1f494927808e014f6b177419",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001927384,
+      "created": 1658001708708,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Update Skill Unauthorized [403]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"description\": \"Linguagem de marcação muito utilizada no desenvolvimento web. Ela é utilizada para estruturar documentos que, posteriormente, serão renderizados em tela.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_450e491fd0784541a47523ba3b54dd1c"
+        },
+        {
+          "id": "pair_8ac0ddcf029643fd9186e6e50c61f87b",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657968785978,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e96119801f094d93b0c86c58a81a2ff7",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001937413,
+      "created": 1658001711317,
+      "url": "{{ _.base_url }}/skills/{{ _.invalid_id }}/",
+      "name": "Update Skill Not Found [404]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"description\": \"Linguagem de marcação muito utilizada no desenvolvimento web. Ela é utilizada para estruturar documentos que, posteriormente, serão renderizados em tela.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_450e491fd0784541a47523ba3b54dd1c"
+        },
+        {
+          "id": "pair_8ac0ddcf029643fd9186e6e50c61f87b",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657968785965.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6f3ab630a5284524a35b686111465cd0",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001942694,
+      "created": 1658000546839,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Destroy Skill Missing Credentials [401]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657968785953,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_068e6c06690e48cfb063562db66e767b",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001950943,
+      "created": 1658001714494,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Destroy Skill Unauthorized [403]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_34ecc0a9e2fa42629f82b4eb5886f6c7",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657962483642.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e308afa657634647be6cff9195791e91",
+      "parentId": "fld_a2d32fc31e15428f8eea220927bbc98e",
+      "modified": 1658001962811,
+      "created": 1658001716859,
+      "url": "{{ _.base_url }}/skills/{{ _.invalid_id }}/",
+      "name": "Destroy Skill Not Found [404]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_34ecc0a9e2fa42629f82b4eb5886f6c7",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657959332487.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_25b22eac476045b5803f789bf1113622",
+      "parentId": "fld_d18ef6cac7f148e1add68d557436a2fd",
+      "modified": 1658002025836,
+      "created": 1658001982715,
+      "url": "{{ _.base_url }}/skills/search/",
+      "name": "Search Skill By Text [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_b93eaa8f79d44ac1a2fdc5eb56a34c75",
+          "name": "q",
+          "value": "html",
+          "description": ""
+        }
+      ],
+      "headers": [
+        {
+          "id": "pair_79d17a18f3e84da8990fa1e7ba6290b1",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658001982715,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_d18ef6cac7f148e1add68d557436a2fd",
+      "parentId": "fld_e39f808be4a644f7914f84b1a156e3a3",
+      "modified": 1657928003049,
+      "created": 1657927844469,
+      "name": "Success",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927848028,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_e39f808be4a644f7914f84b1a156e3a3",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1657927645069,
+      "created": 1657927615074,
+      "name": "Skills Filters",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927594689.25,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_58a20a5d53664ea9af5a94c7cf21e92d",
+      "parentId": "fld_f8c7fce3001b44d08f0fdcaf38d8adc8",
+      "modified": 1658002049413,
+      "created": 1658002038669,
+      "url": "{{ _.base_url }}/skills/search/",
+      "name": "Search Skill By Text [400]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_79d17a18f3e84da8990fa1e7ba6290b1",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658000273666.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_f8c7fce3001b44d08f0fdcaf38d8adc8",
+      "parentId": "fld_e39f808be4a644f7914f84b1a156e3a3",
+      "modified": 1657927847978,
+      "created": 1657927847978,
+      "name": "Fail",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927847978,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_bdf9cbd34e7d4302b06cf8e4faebb44f",
+      "parentId": "fld_7ca3b8daa9e34636996d8bd312a42548",
+      "modified": 1658157149647,
+      "created": 1657982312166,
+      "url": "{{ _.base_url }}/companies/register/",
+      "name": "Create Company [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Test Company 1\",\n\t\"cnpj\": \"00000000000000\",\n\t\"phone\": \"00000000000\",\n\t\"address\": {\n\t\t\"zip_code\": \"00000000\",\n    \"street\": \"Rua dos Bobos\",\n    \"number\": \"0\",\n    \"complement\": null, \n    \"city\": \"Rio de Janeiro\",\n    \"state\": \"RJ\",\n    \"country\": \"Brasil\"\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a5a125b7021746d9be0db34cef4ce9f2"
+        },
+        {
+          "id": "pair_447aaa45817a41f987c25e9740899b0e",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146871,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_7ca3b8daa9e34636996d8bd312a42548",
+      "parentId": "fld_f4dd8d39a4ea4b55bad517ffd852e864",
+      "modified": 1657927869201,
+      "created": 1657927861571,
+      "name": "Success",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927861571,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_f4dd8d39a4ea4b55bad517ffd852e864",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1657927601307,
+      "created": 1657927564310,
+      "name": "Companies",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927594683,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_b0d0a837b432433f8bd56693ca6c50d3",
+      "parentId": "fld_7ca3b8daa9e34636996d8bd312a42548",
+      "modified": 1658003339913,
+      "created": 1658002146821,
+      "url": "{{ _.base_url }}/companies/",
+      "name": "List Companies [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658002146821,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f637fa517a9d4491a93994878d5c2636",
+      "parentId": "fld_7ca3b8daa9e34636996d8bd312a42548",
+      "modified": 1658003444879,
+      "created": 1658002145750,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Retrieve Company [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658002145750,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_917412490e394bfdbc873aa00f777ec6",
+      "parentId": "fld_7ca3b8daa9e34636996d8bd312a42548",
+      "modified": 1658003600607,
+      "created": 1658002144286,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Update Company [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"name\": \"Kenzie Academy Brasil\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_36c0d786557140d3a7ccb81b3044041b",
+          "name": "Authorization",
+          "value": " Token {{ _.token_admin }}",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_f7740d5bced54bf994319bc44e5e9dcf"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002144286,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_79a111d80ceb4ea49cec767aa537925f",
+      "parentId": "fld_7ca3b8daa9e34636996d8bd312a42548",
+      "modified": 1658003623711,
+      "created": 1658002142200,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Destroy Company [204]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_6bdf7138cb9d493cab58d947bb6107ec",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002142200,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_afa3816a5a0d4c9b92979ad73018e129",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004097232,
+      "created": 1658003822519,
+      "url": "{{ _.base_url }}/companies/register/",
+      "name": "Create Company Missing Data [400]",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{\n\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a5a125b7021746d9be0db34cef4ce9f2"
+        },
+        {
+          "id": "pair_447aaa45817a41f987c25e9740899b0e",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146846,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "parentId": "fld_f4dd8d39a4ea4b55bad517ffd852e864",
+      "modified": 1657927856100,
+      "created": 1657927856100,
+      "name": "Fail",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927856100,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_949568de24a149eeb3110bfe2ff1c8b2",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004103596,
+      "created": 1658003858525,
+      "url": "{{ _.base_url }}/companies/register/",
+      "name": "Create Company Missing Credentials [401]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Test Company 1\",\n\t\"cnpj\": \"00000000000000\",\n\t\"phone\": \"00000000000\",\n\t\"address\": {\n\t\t\"zip_code\": \"00000000\",\n    \"street\": \"Rua dos Bobos\",\n    \"number\": \"0\",\n    \"complement\": null, \n    \"city\": \"Rio de Janeiro\",\n    \"state\": \"RJ\",\n    \"country\": \"Brasil\"\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a5a125b7021746d9be0db34cef4ce9f2"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146833.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1717895e8880493888e95fa04a9a30e4",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004180650,
+      "created": 1658004009739,
+      "url": "{{ _.base_url }}/companies/register/",
+      "name": "Create Company Unauthorized [403]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Test Company 1\",\n\t\"cnpj\": \"00000000000000\",\n\t\"phone\": \"00000000000\",\n\t\"address\": {\n\t\t\"zip_code\": \"00000000\",\n    \"street\": \"Rua dos Bobos\",\n    \"number\": \"0\",\n    \"complement\": null, \n    \"city\": \"Rio de Janeiro\",\n    \"state\": \"RJ\",\n    \"country\": \"Brasil\"\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a5a125b7021746d9be0db34cef4ce9f2"
+        },
+        {
+          "id": "pair_447aaa45817a41f987c25e9740899b0e",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146827.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_dc1ed88e5ac24bbea14e45e65c8c8834",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004281066,
+      "created": 1658003829006,
+      "url": "{{ _.base_url }}/companies/{{ _.invalid_id }}/",
+      "name": "Retrieve Company Not Found [404]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658002146796,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d890610f2f9946be9295a96132ff9f77",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004347553,
+      "created": 1658003833553,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Update Company Missing Credentials [401]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"name\": \"Kenzie Academy Brasil\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_36c0d786557140d3a7ccb81b3044041b",
+          "name": "Authorization",
+          "value": " Token {{ _.token_admin }}",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_f7740d5bced54bf994319bc44e5e9dcf"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146746,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b69c6204f1eb4ccbb5daacb1621681cb",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004357153,
+      "created": 1658004292272,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Update Company Unauthorized [403]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"name\": \"Kenzie Academy Brasil\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_36c0d786557140d3a7ccb81b3044041b",
+          "name": "Authorization",
+          "value": " Token {{ _.token_admin }}",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_f7740d5bced54bf994319bc44e5e9dcf"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146733.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_de161ca6ef1d47ea8c61e7160707c70a",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004391669,
+      "created": 1658004289778,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Update Company Not Found [404]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"name\": \"Kenzie Academy Brasil\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_36c0d786557140d3a7ccb81b3044041b",
+          "name": "Authorization",
+          "value": " Token {{ _.token_admin }}",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_f7740d5bced54bf994319bc44e5e9dcf"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146721,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ae136a728ad04335ad05af1e2e203d2b",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004511727,
+      "created": 1658003838114,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Destroy Company Missing Credentials [401]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658002146696,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f1505a4b2f5247b79db5701c386d8868",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004522445,
+      "created": 1658004398423,
+      "url": "{{ _.base_url }}/companies/{{ _.company_id }}/",
+      "name": "Destroy Company Unauthorized [403]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_6bdf7138cb9d493cab58d947bb6107ec",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002146223,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_46fc617734f04f62be43743be479307c",
+      "parentId": "fld_f515b5eb418540be8b2ff7e3518e644c",
+      "modified": 1658004535996,
+      "created": 1658004400924,
+      "url": "{{ _.base_url }}/companies/{{ _.invalid_id }}/",
+      "name": "Destroy Company Not Found [404]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_6bdf7138cb9d493cab58d947bb6107ec",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658002145986.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ef167978143e4438b6c65d15c9e96b4f",
+      "parentId": "fld_eaad37a16c23431eb3a0304ef9127126",
+      "modified": 1658158279005,
+      "created": 1658004933147,
+      "url": "{{ _.base_url }}/companies/jobs/register/",
+      "name": "Create Job [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Pessoa Desenvolvedora Full Stack Jr.\", \n  \"description\": \"Vaga para pessoa desenvolvedora Full Stack Jr.\",\n  \"salary\": 3224.57,\n  \"job_type\": \"PJ\",\n  \"regimen_type\": \"REMOTE\",\n  \"vacancies_count\": 5\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e323a6c619384bd2bf6f129e894301b8"
+        },
+        {
+          "id": "pair_e60705b80b8f4f9aaf3b5745de2f4d61",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658004933147,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_eaad37a16c23431eb3a0304ef9127126",
+      "parentId": "fld_a61a94535aa84074bdc8e67dcfbe2808",
+      "modified": 1657927997342,
+      "created": 1657927879652,
+      "name": "Success",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927885543,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_a61a94535aa84074bdc8e67dcfbe2808",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1658003853679,
+      "created": 1657927594658,
+      "name": "Jobs",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927594637.6875,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_ae1f526d9f0f4341b1d7ae809da840ac",
+      "parentId": "fld_eaad37a16c23431eb3a0304ef9127126",
+      "modified": 1658061819131,
+      "created": 1658004930993,
+      "url": "{{ _.base_url }}/companies/jobs/",
+      "name": "List Jobs [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658004930993,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_93c7a0c00b594a16bc824caaff4ca324",
+      "parentId": "fld_eaad37a16c23431eb3a0304ef9127126",
+      "modified": 1658061877066,
+      "created": 1658004929313,
+      "url": "{{ _.base_url }}/companies/jobs/{{ _.job_id }}/",
+      "name": "Retrieve Jobs [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658004929313,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_52050eb0cf094208b4b9582fe3c3909a",
+      "parentId": "fld_eaad37a16c23431eb3a0304ef9127126",
+      "modified": 1658158517324,
+      "created": 1658004927651,
+      "url": "{{ _.base_url }}/companies/jobs/{{ _.job_id }}/",
+      "name": "Update Jobs [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Pessoa Dev Full Stack\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_90faebf3a8f94eae8f3191b82d57fa49"
+        },
+        {
+          "id": "pair_84ec9fd325fd4cfa92562b06b42e3eef",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658004927651,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_33fcf99f40e944dba0a6aaff178b1ef4",
+      "parentId": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "modified": 1658158605015,
+      "created": 1658158282622,
+      "url": "{{ _.base_url }}/companies/jobs/register/",
+      "name": "Create Job Missing Data [400]",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "{\n\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e323a6c619384bd2bf6f129e894301b8"
+        },
+        {
+          "id": "pair_e60705b80b8f4f9aaf3b5745de2f4d61",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657927885480.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "parentId": "fld_a61a94535aa84074bdc8e67dcfbe2808",
+      "modified": 1657927885493,
+      "created": 1657927885493,
+      "name": "Fail",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1657927885493,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_ddcf8528823f41719aa4d5298ca55c98",
+      "parentId": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "modified": 1658158609148,
+      "created": 1658158317200,
+      "url": "{{ _.base_url }}/companies/jobs/register/",
+      "name": "Create Job Missing Credentials [401]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Pessoa Desenvolvedora Full Stack Jr.\", \n  \"description\": \"Vaga para pessoa desenvolvedora Full Stack Jr.\",\n  \"salary\": 3224.57,\n  \"job_type\": \"PJ\",\n  \"regimen_type\": \"REMOTE\",\n  \"vacancies_count\": 5\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e323a6c619384bd2bf6f129e894301b8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657927885430.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_063cf4542c5145d3b520bb747a127884",
+      "parentId": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "modified": 1658158612502,
+      "created": 1658158322435,
+      "url": "{{ _.base_url }}/companies/jobs/register/",
+      "name": "Create Job Unauthorized [403]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Pessoa Desenvolvedora Full Stack Jr.\", \n  \"description\": \"Vaga para pessoa desenvolvedora Full Stack Jr.\",\n  \"salary\": 3224.57,\n  \"job_type\": \"PJ\",\n  \"regimen_type\": \"REMOTE\",\n  \"vacancies_count\": 5\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e323a6c619384bd2bf6f129e894301b8"
+        },
+        {
+          "id": "pair_e60705b80b8f4f9aaf3b5745de2f4d61",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657927885380.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_3192093f806d47738589524bc6be4110",
+      "parentId": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "modified": 1658158621094,
+      "created": 1658158440017,
+      "url": "{{ _.base_url }}/companies/jobs/{{ _.invalid_id }}/",
+      "name": "Retrieve Jobs Not Found [404]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1657927885355.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b3a69b1536e94d94b45b11471c1f9b8a",
+      "parentId": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "modified": 1658158627305,
+      "created": 1658158378429,
+      "url": "{{ _.base_url }}/companies/jobs/{{ _.job_id }}/",
+      "name": "Update Jobs Missing Credentials [401]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Pessoa Dev Full Stack\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_90faebf3a8f94eae8f3191b82d57fa49"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657927885330.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_156f1c292e58476eae9cb3f6341826fd",
+      "parentId": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "modified": 1658158637016,
+      "created": 1658158383213,
+      "url": "{{ _.base_url }}/companies/jobs/{{ _.job_id }}/",
+      "name": "Update Jobs Unauthorized [403]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Pessoa Dev Full Stack\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_90faebf3a8f94eae8f3191b82d57fa49"
+        },
+        {
+          "id": "pair_84ec9fd325fd4cfa92562b06b42e3eef",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657927885280.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_eb5c7cebd90b4824993a4e88cfe5f8ea",
+      "parentId": "fld_39de1c0a4cc04ce7951ba309b9b9a330",
+      "modified": 1658158646551,
+      "created": 1658158386094,
+      "url": "{{ _.base_url }}/companies/jobs/{{ _.invalid_id }}/",
+      "name": "Update Jobs Not Found [404]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Pessoa Dev Full Stack\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_90faebf3a8f94eae8f3191b82d57fa49"
+        },
+        {
+          "id": "pair_84ec9fd325fd4cfa92562b06b42e3eef",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1657927885230.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_01ded37f1ef066c2fed7e5772af0ed6d24b629ca",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1658005053289,
+      "created": 1657927547001,
+      "name": "Base Environment",
+      "data": {
+        "candidate_id": "{% response 'body', 'req_b55fc261f4ba4a61adf866f671342574', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "recruiter_id": "{% response 'body', 'req_3f4bbf4f482341f588a0f7a3d860f9d3', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "education_id": "{% response 'body', 'req_0273b50a6c874f1eb7a83f361e9c2382', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "skill_id": "{% response 'body', 'req_a55981ef2891453bbaf9037adfa2bc56', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "company_id": "{% response 'body', 'req_bdf9cbd34e7d4302b06cf8e4faebb44f', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "job_id": "{% response 'body', 'req_ef167978143e4438b6c65d15c9e96b4f', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "token_candidate": "{% response 'body', 'req_ede1d580f5fb429bb8e27ce8fe4d9226', 'b64::JC50b2tlbg==::46b', 'never', 60 %}",
+        "token_recruiter": "{% response 'body', 'req_0955f71650d3409ca2853e37f1ba5853', 'b64::JC50b2tlbg==::46b', 'never', 60 %}",
+        "token_admin": "{% response 'body', 'req_91cd06441b1547439cac2233486a46ae', 'b64::JC50b2tlbg==::46b', 'never', 60 %}",
+        "invalid_id": 9999999
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "candidate_id",
+          "recruiter_id",
+          "education_id",
+          "skill_id",
+          "company_id",
+          "job_id",
+          "token_candidate",
+          "token_recruiter",
+          "token_admin",
+          "invalid_id"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1657927547001,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_01ded37f1ef066c2fed7e5772af0ed6d24b629ca",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1657927547002,
+      "created": 1657927547002,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_32aa3ee06530492d999c7b0ec849cf2d",
+      "parentId": "wrk_dec8edbf3bc542018e2bdc60c65fcaa2",
+      "modified": 1657927546995,
+      "created": 1657927546995,
+      "fileName": "Vagas Emprego",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_08b10233989d45ac90194c5dee47fc0f",
+      "parentId": "env_01ded37f1ef066c2fed7e5772af0ed6d24b629ca",
+      "modified": 1658005039076,
+      "created": 1657928058997,
+      "name": "env_dev",
+      "data": { "base_url": "http://localhost:8000/api" },
+      "dataPropertyOrder": { "&": ["base_url"] },
+      "color": "#1eff00",
+      "isPrivate": false,
+      "metaSortKey": 1657928058997,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_9f52d9a93abb4a44b7320a4d621baa90",
+      "parentId": "env_01ded37f1ef066c2fed7e5772af0ed6d24b629ca",
+      "modified": 1657988499866,
+      "created": 1657928061260,
+      "name": "env_prod",
+      "data": {
+        "base_url": "https://vagas-emprego-capstone-m5.herokuapp.com/api"
+      },
+      "dataPropertyOrder": { "&": ["base_url"] },
+      "color": "#0011ff",
+      "isPrivate": false,
+      "metaSortKey": 1657928061260,
+      "_type": "environment"
+    }
+  ]
+}
