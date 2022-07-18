@@ -33,7 +33,7 @@ SECRET_KEY = env.get_var("SECRET_KEY")
 DEBUG = env.get_var("DEBUG", do_format=bool)
 
 ALLOWED_HOSTS = env.get_var("ALLOWED_HOSTS", do_format=list)
-
+ALLOWED_HOSTS = ["*"]
 # Application definition
 
 DJANGO_APPS = [
