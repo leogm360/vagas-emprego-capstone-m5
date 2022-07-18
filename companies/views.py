@@ -1,7 +1,7 @@
 from rest_framework import generics
 from accounts.permissions import IsRecruiterOnly, IsRecruiterOwnerOnly
 
-from jobs.serializers import JobSerializer
+from jobs.serializers import JobCreateSerializer, JobSerializer
 
 from .models import Company
 
@@ -45,12 +45,12 @@ class DetailCompanyView(generics.RetrieveUpdateDestroyAPIView):
 
 class ListJobView(generics.ListAPIView):
     queryset = Job.objects.all()
-    serializer_class = JobSerializer
+    serializer_class = JobCreateSerializer
 
 
 class CreateJobView(generics.CreateAPIView):
     queryset = Job.objects.all()
-    serializer_class = JobSerializer
+    serializer_class = JobCreateSerializer
     
     permission_classes = [IsRecruiterOnly]
 
@@ -61,7 +61,7 @@ class CreateJobView(generics.CreateAPIView):
 
 class DetailJobView(generics.RetrieveUpdateAPIView):
     queryset = Job.objects.all()
-    serializer_class = JobSerializer
+    serializer_class = JobCreateSerializer
 
     permission_classes = [IsRecruiterOwnerOnly]
 
