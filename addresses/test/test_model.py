@@ -1,13 +1,12 @@
-from django.test import TestCase
-
 from addresses.models import Address
-
-# Create your tests here.
+from django.test import TestCase
 
 
 class AddressModelTest(TestCase):
     @classmethod
     def setUpTestData(cls) -> None:
+        print("\n\n Addresses Model Tests \n")
+
         cls.zip_code = "05010000"
         cls.street = "Av. Paulista"
         cls.number = 2000

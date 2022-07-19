@@ -15,6 +15,8 @@ from skills.serializers import SkillSerializer
 class SkillViewTest(APITestCase):
     @classmethod
     def setUpTestData(cls) -> None:
+        print("\n\n Skills Views Tests \n")
+
         cls.skill_data = {
             "title": "HTML5",
             "description": "HTML5 é uma linguagem de marcação para a World Wide Web e é uma tecnologia chave da Internet, originalmente proposto por Opera Software. É a quinta versão da linguagem HTML.",

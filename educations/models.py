@@ -1,9 +1,10 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Education(models.Model):
+    class Meta:
+        ordering = ["id"]
+
     institution_name = models.CharField(max_length=255)
     course = models.CharField(max_length=20)
     start_date = models.DateField()
