@@ -26,10 +26,15 @@ class Account(AbstractUser):
     phone = models.CharField(max_length=11, unique=True)
     is_human_resources = models.BooleanField(default=False)
 
-    address = models.OneToOneField("addresses.Address", on_delete=models.CASCADE, null=True)
+    address = models.OneToOneField(
+        "addresses.Address", on_delete=models.CASCADE, null=True
+    )
 
     company = models.ForeignKey(
-    "companies.Company", on_delete=models.CASCADE, related_name="accounts", null=True
+        "companies.Company",
+        on_delete=models.CASCADE,
+        related_name="accounts",
+        null=True,
     )
 
     username = None

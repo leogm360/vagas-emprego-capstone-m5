@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from educations.models import Education
 from educations.serializers import EducationSerializer, ListEducationSerializer
 from jobs.models import Job
-from jobs.serializers import JobSerializer
+from jobs.serializers import JobCreateSerializer
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
@@ -187,7 +187,7 @@ class ListEducationsAccount(generics.ListAPIView):
 
 class UserRegisterJobView(generics.UpdateAPIView):
     queryset = Job.objects.all()
-    serializer_class = JobSerializer
+    serializer_class = JobCreateSerializer
 
     lookup_url_kwarg = "job_id"
 

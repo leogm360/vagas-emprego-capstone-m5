@@ -1,62 +1,111 @@
-from rest_framework import serializers
-from rest_framework.serializers import SerializerMethodField
 from companies.serializers import CompanyJobSerializer
+from django.core.exceptions import ObjectDoesNotExist
+from rest_framework.serializers import (
+    CharField,
+    IntegerField,
+    ListField,
+    ModelSerializer,
+    SerializerMethodField,
+    ValidationError,
+)
+from skills.models import Skill
 
 from jobs.models import Job
 
-class JobSerializer(serializers.ModelSerializer):
-    location = SerializerMethodField()
+
+class JobBaseSerializer(ModelSerializer):
     subscribers_count = SerializerMethodField()
     company = CompanyJobSerializer(read_only=True)
 
     class Meta:
         model = Job
-        fields = ["id", "title", "description", "salary", "location",  "job_type", "regimen_type", "vacancies_count", "subscribers_count", "issued_at", "company", "account"]
+        depth = 1
+
+    def get_subscribers_count(self, job: Job) -> int:
+        return len(job.account.all())
+
+
+class JobCreateSerializer(JobBaseSerializer):
+    location = CharField(required=False)
+    skills_id = ListField(
+        child=IntegerField(min_value=0),
+        allow_empty=False,
+        write_only=True,
+    )
+
+    class Meta(JobBaseSerializer.Meta):
+        exclude = ["account"]
         read_only_fields = [
-            "id",
             "issued_at",
             "is_active",
         ]
-        extra_kwargs = {"account": {"write_only": True}}
 
-    def get_location(self, job: Job) -> str:
-        return job.company.address.city
+    def set_skills(self, job: Job, skills_data: dict) -> None:
+        errors = {}
 
-    def get_subscribers_count(self, job:Job):
-        accounts = job.account.all()
-        subscribers_count = len(accounts)
-        return subscribers_count
+        for skill_id in skills_data:
+            try:
+                skill = Skill.objects.get(pk=skill_id)
 
-    def update(self, instance, validated_data):
-        list_accounts = instance.account.all()
-        account_data = validated_data.get('account')
+                job.skills.add(skill)
+            except ObjectDoesNotExist:
+                if not errors.get("skills", False):
+                    errors["skills"] = []
 
-        if(account_data not in list_accounts):
-            instance.account.add(account_data)
+                errors["skills"].append(
+                    f"Skill with id {skill_id} does not exist."
+                )
+
+        if errors.get("skills", False):
+            raise ValidationError(errors)
+
+    def create(self, validated_data: dict) -> Job:
+        location_data = validated_data.pop("location", False)
+        skills_data = validated_data.pop("skills_id")
+
+        job: Job = Job.objects.create(**validated_data)
+
+        if not location_data:
+            job.location = job.company.address.city
         else:
-            raise serializers.ValidationError({"detail": "You do not register again."})
-        
-        instance.save()
-        return instance
+            job.location = location_data
 
-class JobCreateSerializer(serializers.ModelSerializer):
-    location = SerializerMethodField()
-    subscribers_count = SerializerMethodField()
-    company = CompanyJobSerializer(read_only=True)
+        self.set_skills(job, skills_data)
 
-    class Meta:
-        model = Job
-        fields = ["id", "title", "description", "salary", "location",  "job_type", "regimen_type", "vacancies_count", "subscribers_count", "issued_at", "company"]
+        job.save()
+
+        return job
+
+    def update(self, instance: Job, validated_data: dict) -> Job:
+        skills_data = validated_data.pop("skills_id", False)
+        account_data = validated_data.pop("account", False)
+
+        job = super().update(instance, validated_data)
+
+        if skills_data:
+            self.set_skills(job, skills_data)
+
+        if account_data:
+            has_account = job.account.filter(email=account_data.email).exists()
+
+            if has_account:
+                raise ValidationError(
+                    {
+                        "job": f"User {account_data.first_name} {account_data.last_name} cannot apply multiple times."
+                    }
+                )
+            else:
+                job.account.add(account_data)
+
+        job.save()
+
+        return job
+
+
+class JobSearchSerializer(JobBaseSerializer):
+    class Meta(JobBaseSerializer.Meta):
+        exclude = ["account"]
         read_only_fields = [
-            "id",
             "issued_at",
             "is_active",
         ]
-
-    def get_location(self, job: Job) -> str:
-        return job.company.address.city
-
-    def get_subscribers_count(self, job:Job):
-        accounts = job.account.all()
-        subscribers_count = len(accounts)
-        return subscribers_count

@@ -29,14 +29,12 @@ class Job(models.Model):
     is_active = models.BooleanField(default=True)
 
     account = models.ManyToManyField(
-        "accounts.Account", related_name="accounts_id",
+        "accounts.Account",
+        related_name="accounts_id",
     )
 
     company = models.ForeignKey(
         "companies.Company", on_delete=models.CASCADE, related_name="company_id"
     )
 
-    skills = models.ManyToManyField(
-        "skills.Skill", related_name="skill_id"
-    )
-
+    skills = models.ManyToManyField("skills.Skill", related_name="skill_id")
