@@ -30,12 +30,11 @@ env = EnvironManager(BASE_DIR, ".env")
 SECRET_KEY = env.get_var("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.get_var("DEBUG", do_format=bool)
+DEBUG = env.get_var("DEBUG", convert="bool")
 
-ALLOWED_HOSTS = env.get_var("ALLOWED_HOSTS", do_format=list)
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = env.get_var("ALLOWED_HOSTS", convert="list")
+
 # Application definition
-
 DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
