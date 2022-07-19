@@ -1,3 +1,4 @@
+from json import dumps
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 from rest_framework.views import status
@@ -37,46 +38,46 @@ class TestAccountsViews(APITestCase):
             country="Brazil"
             )
 
-        cls.address3 = Address.objects.create(
-            zip_code="0000002",
-            street="Test",
-            number=123,
-            complement="House",
-            city="São Paulo",
-            state="SP",
-            country="Brazil"
-            )
+        # cls.address3 = Address.objects.create(
+        #     zip_code="0000002",
+        #     street="Test",
+        #     number=123,
+        #     complement="House",
+        #     city="São Paulo",
+        #     state="SP",
+        #     country="Brazil"
+        #     )
 
-        cls.address4 = Address.objects.create(
-            zip_code="0000003",
-            street="Test",
-            number=123,
-            complement="House",
-            city="São Paulo",
-            state="SP",
-            country="Brazil"
-            )
+        # cls.address4 = Address.objects.create(
+        #     zip_code="0000003",
+        #     street="Test",
+        #     number=123,
+        #     complement="House",
+        #     city="São Paulo",
+        #     state="SP",
+        #     country="Brazil"
+        #     )
         
 
-        # cls.address3 = {
-        #         "zip_code":"0000002",
-        #         "street":"Test",
-        #         "number":"123",
-        #         "complement":"House",
-        #         "city":"São Paulo",
-        #         "state":"SP",
-        #         "country":"Brazil"
-        #     }
+        cls.address3 = {
+                "zip_code":"0000002",
+                "street":"Test",
+                "number":"123",
+                "complement":"House",
+                "city":"Sao Paulo",
+                "state":"SP",
+                "country":"Brazil"
+            }
 
-        # cls.address4 = {
-        #         "zip_code":"0000003",
-        #         "street":"Test",
-        #         "number":"123",
-        #         "complement":"House",
-        #         "city":"São Paulo",
-        #         "state":"SP",
-        #         "country":"Brazil"
-        #     }
+        cls.address4 = {
+                "zip_code":"0000003",
+                "street":"Test",
+                "number":"123",
+                "complement":"House",
+                "city":"Sao Paulo",
+                "state":"SP",
+                "country":"Brazil"
+            }
 
 
         cls.company01 = Company.objects.create(
@@ -97,7 +98,7 @@ class TestAccountsViews(APITestCase):
         )
 
         cls.recruiter = Account.objects.create_user(
-            email="recruiter@hr.com",
+            email="recruiter@teste.com",
             first_name="Recrutino",
             last_name="Smallboss",
             password="1234",
@@ -108,15 +109,14 @@ class TestAccountsViews(APITestCase):
         )
 
 
-        cls.candidate = Account.objects.create(
-            email="candidate@jr.com",
+        cls.candidate = Account.objects.create_user(
+            email="candidate@teste.com",
             first_name="Candito",
             last_name="Jobs",
             password="1234",
             cpf="13125234311",
             gender="Non-Binary",
-            phone="99814122533",
-            address=cls.address2
+            phone="99814122533"
         )
 
         cls.candidate.skills.set([cls.skill01.id,cls.skill02.id])
@@ -136,8 +136,8 @@ class TestAccountsViews(APITestCase):
             "cpf": "88888888888",
             "gender": "Male",
             "phone": "99814112322",
-            "address": cls.address3,
-            "skills_id": [cls.skill01.id,cls.skill02.id]
+            "skills_id": [cls.skill01.id,cls.skill02.id],
+            "address": cls.address3
         }
 
         cls.recruiter01 = {
@@ -148,20 +148,18 @@ class TestAccountsViews(APITestCase):
             "cpf": "99999999999",
             "gender": "Male",
             "phone": "99911321233",
-            "address": cls.address4,
             "is_human_resources": "true",
-            "company_id": cls.company01.id
+            "company_id": cls.company01.id,
+            "address": cls.address4
         }
 
     def test_register_account_candidate(self):
-        res = self.client.post("/api/accounts/register/", data=self.candidate01)
-        # ipdb.set_trace()
-
+        res = self.client.post("/api/accounts/register/", data=self.candidate01, format="json")
 
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
 
     def test_register_account_recruiter(self):
-        res = self.client.post("/api/accounts/register/", data=self.recruiter01)
+        res = self.client.post("/api/accounts/register/", data=self.recruiter01, format="json")
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
 
     def test_register_missing_keys(self):
@@ -177,8 +175,8 @@ class TestAccountsViews(APITestCase):
         self.assertIn("phone", res.data)
 
     def test_register_email_cpf_phone_already_existy(self):
-        self.client.post("/api/accounts/register/", data=self.recruiter01)
-        res = self.client.post("/api/accounts/register/", data=self.recruiter01)
+        self.client.post("/api/accounts/register/", data=self.recruiter01, format="json")
+        res = self.client.post("/api/accounts/register/", data=self.recruiter01, format="json")
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
     
@@ -208,7 +206,8 @@ class TestAccountsViews(APITestCase):
             "email":"candidate@teste.com",
             "password":"1234"
         }
-        res = self.client.post("/api/accounts/login/", data=login_data )
+        res = self.client.post("/api/accounts/login/", data=login_data)
+        
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(self.candidate.auth_token.key, res.data["token"])    
 
