@@ -1,3 +1,4 @@
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -5,9 +6,12 @@ from .utils import CustomUserManager
 
 
 class GenderFieldChoice(models.TextChoices):
-    cisgender = ("Cisgender", "C")
-    transgender = ("Transgender", "T")
-    non_binary = ("Non Binary", "NB")
+    male = ("Male",)
+    female = ("Female",)
+    male_transgender = ("Male Transgender",)
+    female_transgender = ("Female Transgender",)
+    non_binary = ("Non Binary",)
+    other = ("Other",)
 
 
 class Account(AbstractUser):
