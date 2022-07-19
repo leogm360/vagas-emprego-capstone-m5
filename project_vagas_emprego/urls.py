@@ -1,4 +1,4 @@
-"""projeto_vagas_emprego URL Configuration
+"""project_vagas_emprego URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/

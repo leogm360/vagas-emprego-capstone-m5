@@ -14,6 +14,9 @@ class GenderFieldChoice(models.TextChoices):
 
 
 class Account(AbstractUser):
+    class Meta:
+        ordering = ["id"]
+
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)

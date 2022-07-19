@@ -40,9 +40,6 @@ class DetailCompanyView(generics.RetrieveUpdateDestroyAPIView):
         serializer.save()
 
 
-# Jobs View
-
-
 class ListJobView(generics.ListAPIView):
     queryset = Job.objects.all()
     serializer_class = JobCreateSerializer
