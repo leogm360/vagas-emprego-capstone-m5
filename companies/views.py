@@ -1,17 +1,13 @@
-from rest_framework import generics
 from accounts.permissions import IsRecruiterOnly, IsRecruiterOwnerOnly
-
-from jobs.serializers import JobCreateSerializer, JobSerializer
-
-from .models import Company
-
-from .serializers import CompanySerializer
 from addresses.models import Address
 from addresses.serializers import AddressSerializer
-from .permissions import IsCompanyRecruiterOrAdmin, IsAdminOrReadOnly
-
-
 from jobs.models import Job
+from jobs.serializers import JobCreateSerializer
+from rest_framework import generics
+
+from .models import Company
+from .permissions import IsAdminOrReadOnly, IsCompanyRecruiterOrAdmin
+from .serializers import CompanySerializer
 
 
 class CompanyView(generics.ListCreateAPIView):
@@ -34,7 +30,9 @@ class DetailCompanyView(generics.RetrieveUpdateDestroyAPIView):
 
     def perform_update(self, serializer):
         if "address" in self.request.data:
-            addressserializer = AddressSerializer(data=self.request.data["address"])
+            addressserializer = AddressSerializer(
+                data=self.request.data["address"]
+            )
             addressserializer.is_valid()
             ad1 = Address.objects.create(**addressserializer.validated_data)
             ad1.save()
@@ -53,7 +51,7 @@ class ListJobView(generics.ListAPIView):
 class CreateJobView(generics.CreateAPIView):
     queryset = Job.objects.all()
     serializer_class = JobCreateSerializer
-    
+
     permission_classes = [IsRecruiterOnly]
 
     def perform_create(self, serializer):
