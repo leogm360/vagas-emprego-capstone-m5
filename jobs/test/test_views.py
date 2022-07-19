@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase
 from accounts.models import Account
 from addresses.models import Address
 from companies.models import Company
+from skills.models import Skill
 from rest_framework.authtoken.models import Token
 from rest_framework.views import status
 
@@ -9,6 +10,9 @@ class JobsViewTest(APITestCase):
     @classmethod
     def setUpTestData(cls) -> None:
         print('Executando Testes Views Jobs')
+
+        cls.skill01 = Skill.objects.create(title="JS", description="Linguagem de programação.")
+        cls.skill02 = Skill.objects.create(title="React", description="Framework.")
 
         cls.address01 = Address.objects.create(
             zip_code="0000000",
@@ -92,7 +96,7 @@ class JobsViewTest(APITestCase):
             cpf='12345678911',
             gender='Cisgender',
             phone='91982010000',
-            address=cls.address2
+            address=cls.address2,
             )
 
         cls.userCandidate02 = Account.objects.create(
@@ -103,7 +107,7 @@ class JobsViewTest(APITestCase):
             cpf='12345678921',
             gender='Cisgender',
             phone='91982050000',
-            address=cls.address6
+            address=cls.address6,
             )
 
         cls.userRH01 = Account.objects.create(
@@ -116,7 +120,7 @@ class JobsViewTest(APITestCase):
             phone='91982020000', 
             is_human_resources=True, 
             company_id=cls.company01.id, 
-            address=cls.address3
+            address=cls.address3,
             )
 
         cls.userRH02 = Account.objects.create(
@@ -153,7 +157,8 @@ class JobsViewTest(APITestCase):
             'salary': 5000.00,
             'job_type': 'CLT',
             'regimen_type': 'HYBRID', 
-            'vacancies_count': 5
+            'vacancies_count': 5,
+            'skills_id': [cls.skill01.id,cls.skill02.id]
             }
 
     def test_create_job_only_authenticated_user_rh_sucess(self):
@@ -353,8 +358,8 @@ class JobsViewTest(APITestCase):
         res = self.client.patch('/api/accounts/jobs/1/')
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('detail', res.data)
-        self.assertEquals(res.data['detail'], 'You do not register again.')
+        self.assertIn('job', res.data)
+        self.assertEquals(res.data['job'], f"User {self.userCandidate01.first_name} {self.userCandidate01.last_name} cannot apply multiple times.")
         self.assertIn('status', res.data)
         self.assertIn('status_code', res.data)
 
