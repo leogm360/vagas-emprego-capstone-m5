@@ -1,5 +1,3 @@
-import email
-
 from accounts.models import Account
 from django.test import TestCase
 
@@ -7,6 +5,8 @@ from django.test import TestCase
 class AccountsModelTest(TestCase):
     @classmethod
     def setUpTestData(cls) -> None:
+        print("\n\n Accounts Model Tests \n")
+
         cls.email = "a@a.com"
         cls.first_name = "a"
         cls.last_name = "b"
@@ -23,7 +23,7 @@ class AccountsModelTest(TestCase):
             cpf=cls.cpf,
             gender=cls.gender,
             phone=cls.phone,
-            password=cls.password
+            password=cls.password,
         )
 
         cls.recruiter = Account.objects.create_user(
@@ -48,7 +48,6 @@ class AccountsModelTest(TestCase):
             is_human_resources=False,
         )
 
-    # Test Fields
     def test_fields_validated_email_name_cpf_phone(self):
         user = Account.objects.get(cpf=self.cpf)
 

@@ -26,7 +26,6 @@ from . import serializers
 from .models import Account
 
 
-# POST /api/accounts/register/ - registra um usuário.
 class RegisterAccountView(SerializerByAccountTypeMixin, generics.CreateAPIView):
     queryset = Account.objects.all()
     serializer_map = {
@@ -66,7 +65,6 @@ class RegisterAccountView(SerializerByAccountTypeMixin, generics.CreateAPIView):
             self.perform_for_candidate(address, serializer)
 
 
-# GET /api/accounts/ - lista todos os usuários, somente admin.
 class ListAccountsView(generics.ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdmOnly]
@@ -75,7 +73,6 @@ class ListAccountsView(generics.ListAPIView):
     serializer_class = serializers.ListAccountsSerializer
 
 
-# POST /api/accounts/login/ - inicia sessão do usuário.
 class LoginAccountsView(APIView):
     def post(self, request):
         serializer = serializers.LoginSerializer(data=request.data)
@@ -95,11 +92,6 @@ class LoginAccountsView(APIView):
         )
 
 
-# GET /api/accounts/<int:pk>/ - recupera os dados do usuário, somente dono da conta.
-# PATCH  /api/accounts/<int:pk>/ - atualiza parcialmente os dados do usuário, somente dono da conta.
-# DELETE /api/accounts/<int:pk>/ - desativa a conta de um usuário, somente dono da conta.
-
-
 class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsOwnerOrAdmin]
@@ -108,31 +100,24 @@ class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.ListAccountsSerializer
 
 
-# GET /api/accounts/<int:pk>/jobs/ - lista todas as vagas nas quais o candidato se inscreveu, somente dono da conta.
 class ListJobsRegistredView(generics.ListAPIView):
     ...
 
 
-# PATCH  /api/accounts/<int:pk>/company/<int:pk>/bind - associa um usuário recrutador a uma empresa, somente usuários recrutadores.
 class AddCompanyToRecruiterView(generics.UpdateAPIView):
     ...
 
 
-# PATCH /api/accounts/<str:email>/recover/ - reativa a conta de um usuário desativado, livre.
 class ActiveAccountView(generics.UpdateAPIView):
     ...
 
 
-# PATCH /api/accounts/<pk:int>/management/activation/ - ativa/desativa conta do usuário, somente admin.
 class ActiveDeactiveAccountView(generics.UpdateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdmOnly]
 
     queryset = Account.objects.all()
     serializer_class = serializers.ActiveDeactiveAccountSerializer
-
-
-# Education Views
 
 
 class ListCreateEducationsView(
@@ -152,9 +137,6 @@ class ListCreateEducationsView(
         return serializer.save(account=self.request.user)
 
 
-# List, Patch, Delete Educations From Education_Id
-
-
 class RetrievePatchEducationView(
     SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView
 ):
@@ -169,9 +151,6 @@ class RetrievePatchEducationView(
     }
 
 
-# List Educations From User Id
-
-
 class ListEducationsAccount(generics.ListAPIView):
     queryset = Education.objects.all()
     serializer_class = ListEducationSerializer
@@ -180,9 +159,6 @@ class ListEducationsAccount(generics.ListAPIView):
         account = get_object_or_404(Account, pk=self.kwargs["account_id"])
 
         return Education.objects.filter(account=account)
-
-
-# Job View
 
 
 class UserRegisterJobView(generics.UpdateAPIView):

@@ -6,8 +6,6 @@ from .filters import JobsFilter
 from .models import Job
 from .serializers import JobSearchSerializer
 
-# from .permissions
-
 
 class SearchJobsView(generics.ListAPIView):
     queryset = Job.objects.all()

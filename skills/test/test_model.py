@@ -5,6 +5,8 @@ from skills.models import Skill
 class SkillModelTest(TestCase):
     @classmethod
     def setUpTestData(cls) -> None:
+        print("\n\n Skills Model Tests \n")
+
         cls.skill_one = {
             "title": "HTML5",
             "description": """

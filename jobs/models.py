@@ -14,8 +14,10 @@ class RegimeChoices(models.TextChoices):
     HYBRID = ("HYBRID",)
 
 
-# Create your models here.
 class Job(models.Model):
+    class Meta:
+        ordering = ["id"]
+
     title = models.CharField(max_length=255)
     description = models.TextField()
     salary = models.DecimalField(max_digits=10, decimal_places=5)
