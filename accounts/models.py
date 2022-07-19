@@ -1,4 +1,3 @@
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -36,6 +35,8 @@ class Account(AbstractUser):
         related_name="accounts",
         null=True,
     )
+
+    skills = models.ManyToManyField("skills.Skill", related_name="skills_user")
 
     username = None
     USERNAME_FIELD = "email"
