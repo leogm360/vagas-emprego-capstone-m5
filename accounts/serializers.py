@@ -111,7 +111,6 @@ class AccountSerializerIsRH(ModelSerializer):
 
     def create(self, validated_data: dict):
         user = Account.objects.create_user(**validated_data)
-        print(validated_data)
 
         return user
 
