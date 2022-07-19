@@ -5,9 +5,12 @@ from .utils import CustomUserManager
 
 
 class GenderFieldChoice(models.TextChoices):
-    cisgender = ("Cisgender", "C")
-    transgender = ("Transgender", "T")
-    non_binary = ("Non Binary", "NB")
+    male = ("Male",)
+    female = ("Female",)
+    male_transgender = ("Male Transgender",)
+    female_transgender = ("Female Transgender",)
+    non_binary = ("Non Binary",)
+    other = ("Other",)
 
 
 class Account(AbstractUser):
@@ -22,11 +25,18 @@ class Account(AbstractUser):
     phone = models.CharField(max_length=11, unique=True)
     is_human_resources = models.BooleanField(default=False)
 
-    address = models.OneToOneField("addresses.Address", on_delete=models.CASCADE, null=True)
+    address = models.OneToOneField(
+        "addresses.Address", on_delete=models.CASCADE, null=True
+    )
 
     company = models.ForeignKey(
-    "companies.Company", on_delete=models.CASCADE, related_name="accounts", null=True
+        "companies.Company",
+        on_delete=models.CASCADE,
+        related_name="accounts",
+        null=True,
     )
+
+    skills = models.ManyToManyField("skills.Skill", related_name="skills_user")
 
     username = None
     USERNAME_FIELD = "email"
