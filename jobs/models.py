@@ -37,4 +37,4 @@ class Job(models.Model):
         "companies.Company", on_delete=models.CASCADE, related_name="company_id"
     )
 
-    skills = models.ManyToManyField("skills.Skill", related_name="skill_id")
+    skills = models.ManyToManyField("skills.Skill", related_name="skills_job")

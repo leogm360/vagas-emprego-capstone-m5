@@ -37,6 +37,7 @@ class AccountSerializer(ModelSerializer):
             "phone",
             "address",
             "skills_id",
+            "skills",
             "is_human_resources",
         ]
         depth = 1
@@ -65,7 +66,7 @@ class AccountSerializer(ModelSerializer):
     def create(self, validated_data: dict):
         skills_data = validated_data.pop("skills_id")
 
-        user = user.objects.create_user(**validated_data)
+        user = Account.objects.create_user(**validated_data)
 
         self.set_skills(user, skills_data)
 
