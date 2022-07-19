@@ -97,7 +97,7 @@ python manage.py createsuperuser
 ## 5. Endpoints
 [ Voltar para o topo ](#tabela-de-conteúdos)
 
-Acesse a [documentação]https://vagas-emprego-capstone-m5.herokuapp.com/api/doc/schema/swagger-ui/) para verificar os Endpoints, formatos de requisições e respostas esperadas.
+Acesse a [documentação](https://vagas-emprego-capstone-m5.herokuapp.com/api/doc/schema/swagger-ui/) para verificar os Endpoints, formatos de requisições e respostas esperadas.
 
 ---
 
