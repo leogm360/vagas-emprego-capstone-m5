@@ -9,7 +9,6 @@ class CustomUserManager(BaseUserManager):
         now = timezone.now()
 
         if not email:
-            print(email)
             raise ValueError("The given email must be set")
 
         email = self.normalize_email(email)

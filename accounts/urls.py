@@ -21,5 +21,5 @@ urlpatterns = [
     ),
     path(
         "accounts/jobs/<int:job_id>/", views.UserRegisterJobView.as_view()
-    ),  # CRIAR VIEW PARA ASSOCIAR USER COM A VAGA JOB
+    ), 
 ]
