@@ -7,9 +7,12 @@ class SerializerByMethodMixin:
 
 class SerializerByAccountTypeMixin:
     def get_serializer_class(self, *args, **kwargs):
-        is_humam_resources = self.request.data.get("is_human_resources", False)
+        recruiter_request = self.request.data.get("is_human_resources", False)
+        recruiter_token = getattr(
+            self.request.user, "is_human_resources", False
+        )
 
-        if is_humam_resources:
+        if recruiter_request or recruiter_token:
             return self.serializer_map.get("HUMAN_RESOURCES")
         else:
             return self.serializer_map.get("CANDIDATE")

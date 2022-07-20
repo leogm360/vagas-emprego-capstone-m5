@@ -1,0 +1,1349 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-07-20T11:45:49.837Z",
+  "__export_source": "insomnia.desktop.app:v2022.4.2",
+  "resources": [
+    {
+      "_id": "req_f448fa4a83674d6d8f79368e464aba2b",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658317307347,
+      "created": 1658253032925,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Login Admin [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"admin@email.com\",\n\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0df5aa528f84498bb5219ed5d5664cb9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658253032925,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_69b1bf83be5b4f769d394df87002e359",
+      "parentId": "wrk_94592825d4914c959123d64438de1df0",
+      "modified": 1658263074039,
+      "created": 1658159311944,
+      "name": "E2E - Recruiter",
+      "description": "End to end recruiters route.",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658159311944,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_94592825d4914c959123d64438de1df0",
+      "parentId": null,
+      "modified": 1658159237884,
+      "created": 1658159237884,
+      "name": "Vagas Emprego - E2E",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_de39f39eaeba47d0bc36edddac3ca44e",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658317221608,
+      "created": 1658252893747,
+      "url": "{{ _.base_url }}/companies/register/",
+      "name": "Create Company [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Batata Dev Ltda.\",\n  \"cnpj\": \"72192925000192\",\n  \"phone\": \"51921137581\",\n  \"address\": {\n    \"zip_code\": \"70083900\",\n    \"street\": \"Rua dos Bobos\",\n    \"number\": \"0\",\n    \"complement\": null,\n    \"city\": \"Brasília\",\n    \"state\": \"DF\",\n    \"country\": \"Brasil\"\n  }\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5dc1ac3c8dac45ba87b3cd5ba601a7bf"
+        },
+        {
+          "id": "pair_5e91661bf8b44754a5bc9b4dbc289a23",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658252893747,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a12bed1ef9cd48faa645520ddb218bae",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658277882013,
+      "created": 1658252932997,
+      "url": "{{ _.base_url }}/accounts/register/",
+      "name": "Create Recruiter [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"leonardo.moraes@batdev.com\",\n  \"password\": \"rUThMxYyPj\",\n  \"first_name\": \"Leonardo\",\n  \"last_name\": \"Moraes\",\n  \"cpf\": \"56581921025\",\n  \"gender\": \"Male\",\n  \"phone\": \"94931144980\",\n  \"address\": {\n    \"zip_code\": \"69903012\",\n    \"street\": \"Rua Siqueira de Menezes\",\n    \"number\": 1521,\n    \"complement\": \"7º Andar Sala 200 até 210\",\n    \"city\": \"Rio Branco\",\n    \"state\": \"AC\",\n    \"country\": \"Brasil\"\n  },\n  \"is_human_resources\": true,\n  \"company_id\": \"{{ _.company_id }}\"\n}\n"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_887d8c8a08d1477484131618a762fb42",
+          "name": "",
+          "value": "",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_95b7a30fa3e14adca5ab6dd9b8764d72"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658252893697,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0e8a69d15aaa473792c28fabe0f5e3b3",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658277887313,
+      "created": 1658253073399,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Login Recruiter [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"leonardo.moraes@batdev.com\",\n  \"password\": \"rUThMxYyPj\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a92b02a40e344625b35bd17fd11e7952"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658252893684.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c7ace6d0a2994063b2c867f0c9d37e74",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658277889728,
+      "created": 1658277165844,
+      "url": "{{ _.base_url }}/accounts/{{ _.recruiter_id }}/",
+      "name": "Retrieve Recruiter [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_17731ab26b22421caa18c3310c00a240",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658252893681.375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_cd25f9ac32d64715883527274960ffec",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658265360087,
+      "created": 1658265324389,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "List Skills [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_3b48b429f4494e3282fb8431cee03a7a",
+          "name": "q",
+          "value": "html",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658252893678.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_482ba0bd72774d52afb91012bc4747ea",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658265893082,
+      "created": 1658252968506,
+      "url": "{{ _.base_url }}/skills/search/",
+      "name": "Search Skills [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_3b48b429f4494e3282fb8431cee03a7a",
+          "name": "q",
+          "value": "JavaScript",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658252893672,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c465736f73b647ed8c6ab6efe86a7c67",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658279130737,
+      "created": 1658252953032,
+      "url": "{{ _.base_url }}/companies/jobs/register/",
+      "name": "Create Job [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n    \"title\": \"Pessoa Desenvolvedora Fullstack\",\n    \"description\": \"Vaga para pessoa desenvolvedora Fullstack com conhecimentos em HTML, CSS, JavaScript, React, Redux, TypeScript, Node.js, Express.js, TypeORM, SQL e PostgreSQL\",\n    \"salary\": 3524.55,\n    \"skills_id\": [1, 2, 3, 5, 12, 16, 19, 20, 21, 28, 29],\n    \"job_type\": \"CLT\",\n    \"regimen_type\": \"PRESENCIAL\",\n    \"vacancies_count\": 5\n  }"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_464e8b6f8a7447da8933054998e6853d"
+        },
+        {
+          "id": "pair_44a4d748814547fcbfc4e56503c5ddcf",
+          "name": "Authorization",
+          "value": "Token {{ _.token_recruiter }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658252893647,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6ebb2869fbec46a6b094a7e7f6c533ba",
+      "parentId": "fld_69b1bf83be5b4f769d394df87002e359",
+      "modified": 1658271833518,
+      "created": 1658266275275,
+      "url": "{{ _.base_url }}/companies/jobs/",
+      "name": "List Jobs [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_3b48b429f4494e3282fb8431cee03a7a",
+          "name": "q",
+          "value": "html",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658252893597,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ba9ae4796a8f493d8f9d441a911e2268",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658278018837,
+      "created": 1658278016201,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "List Skills [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_3b48b429f4494e3282fb8431cee03a7a",
+          "name": "q",
+          "value": "html",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658272185706,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_11c716aaf2784011a9972baca09ca392",
+      "parentId": "wrk_94592825d4914c959123d64438de1df0",
+      "modified": 1658272017135,
+      "created": 1658272014773,
+      "name": "E2E - Candidate",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658159311894,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_2c6ddec45e1c4838804e9ed432510eae",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658278024872,
+      "created": 1658278021884,
+      "url": "{{ _.base_url }}/skills/search/",
+      "name": "Search Skills [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_3b48b429f4494e3282fb8431cee03a7a",
+          "name": "q",
+          "value": "JavaScript",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658272185681,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7fa6579a101d4243b021005d88a5f473",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658278056487,
+      "created": 1658272185656,
+      "url": "{{ _.base_url }}/accounts/register/",
+      "name": "Create Candidate [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"enzo.silva@email.com\",\n  \"password\": \"y2oD1jn5zB\",\n  \"first_name\": \"Enzo\",\n  \"last_name\": \"Silva\",\n  \"cpf\": \"45178918010\",\n  \"gender\": \"Male\",\n  \"phone\": \"42923576267\",\n  \"skills_id\": [1, 2, 3, 5, 12, 16, 19, 20, 21, 28, 29],\n  \"address\": {\n    \"zip_code\": \"58075770\",\n    \"street\": \"Rua Hermenegildo Dias\",\n    \"number\": 234,\n    \"complement\": \"Condomínio Village\",\n    \"city\": \"Brasília\",\n    \"state\": \"PB\",\n    \"country\": \"Brasil\"\n  }\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5dca1f3daee5480b876641daf49c962a"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658272185656,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0e45532d6e7345828dbfb0d37eab6743",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658317102018,
+      "created": 1658273505563,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Login Candidate [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"enzo.silva@email.com\",\n  \"password\": \"y2oD1jn5zB\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5dca1f3daee5480b876641daf49c962a"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658262609290.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_962006b3d47c4131bee0845278d1fd53",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658317106078,
+      "created": 1658274052319,
+      "url": "{{ _.base_url }}/accounts/education/",
+      "name": "Create Candidate Education [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"institution_name\": \"Kenzie Academy\",\n  \"course\": \"Full Stack\",\n  \"start_date\": \"2021-09-14\",\n  \"end_date\": \"2022-09-14\",\n  \"certificate_link\": \"https://cursofullstackmaster.online/certificado.jpeg\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5dca1f3daee5480b876641daf49c962a"
+        },
+        {
+          "id": "pair_311684f5620841e9819eef8f9cd53deb",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658257821107.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_5f60b85263724934bd8120b104dd66e2",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658315753720,
+      "created": 1658274557808,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Retrieve Candidate [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_17731ab26b22421caa18c3310c00a240",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658257821057.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_616d2749fb854ccd95d11c8c6a28cd4b",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658315222802,
+      "created": 1658277959613,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Title [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "q",
+          "value": "backend",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658255426966.375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_041ac48be75b4c4d8e5b46675de99921",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658281633807,
+      "created": 1658281455211,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Description [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "q",
+          "value": "typeorm",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658254828456.0312,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a9b703fbe3fb4a15a304293267623869",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658281590117,
+      "created": 1658281458534,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Location [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "q",
+          "value": "manaus",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658254529200.8594,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_71dbb54511a74ab1892a9aac6a625bb8",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658281644035,
+      "created": 1658281491080,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Type [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "q",
+          "value": "clt",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658254379573.2734,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a438b3b029ba42f7af867fc1203dba26",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658281654290,
+      "created": 1658281494798,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Regimen [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "q",
+          "value": "pj",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658254304759.4805,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1b6070bcb0c640a9839280ca6b8bce38",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658281449113,
+      "created": 1658278483671,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Date [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "issued_at",
+          "value": "2022-07-20",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658254229945.6875,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c552cdc2a7fb4fafabaf902b94a10b08",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658280405584,
+      "created": 1658278486961,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Skill [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "skills",
+          "value": "html",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253631435.3438,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_02a2d6a6473d458bac47a0ab279f9f55",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658282039803,
+      "created": 1658278491111,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Vacancies Gte [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "vacancies_count_gte",
+          "value": "3",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253332180.1719,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ea938c3e1845466fb7f8bb438c0646cd",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658282036068,
+      "created": 1658281835876,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Vacancies Lte [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_37f88b0843a74165a8007aaa1abcb758",
+          "name": "vacancies_count_lte",
+          "value": "2",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253182552.586,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_affd5a3ca8fd4e51beabde8f223d44e0",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658314993116,
+      "created": 1658281838821,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Subscribers Gte [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "subscribers_count_gte",
+          "value": "0",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253107738.793,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_79e7d18c4a37483a954118e75af4f5a2",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658314999082,
+      "created": 1658281847836,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Subscribers Lte [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "subscribers_count_lte",
+          "value": "CLT",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253070331.8965,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_463d494beb5f4074b2fb8b2469e10c0e",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658315053884,
+      "created": 1658281852085,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Salary Gte[200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "salary_gte",
+          "value": "3200",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253051628.4482,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1a7b28c9145a48f9a5da6301b3719491",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658315070532,
+      "created": 1658281854726,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Salary Lte [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "salary_lte",
+          "value": "3000",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253042276.724,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_68955eb9c01543979019a284336f5bf7",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658317152451,
+      "created": 1658315100314,
+      "url": "{{ _.base_url }}/accounts/jobs/2/",
+      "name": "Subscribe User To Job [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_4e55b35446c54065b8757b231e8269e6",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658253042226.724,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a2940238e02442a1bd3568eb54c337bf",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658317128351,
+      "created": 1658316013680,
+      "url": "{{ _.base_url }}/jobs/search/",
+      "name": "Search Jobs By Title [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "id": "pair_11351eb549b34b46bc1e493d1091cada",
+          "name": "q",
+          "value": "backend",
+          "description": ""
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658253042201.724,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_820db3962e0944bca632d7fff004168d",
+      "parentId": "fld_11c716aaf2784011a9972baca09ca392",
+      "modified": 1658316433163,
+      "created": 1658315421625,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/",
+      "name": "Retrieve Candidate [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_17731ab26b22421caa18c3310c00a240",
+          "name": "Authorization",
+          "value": "Token {{ _.token_candidate }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658253042176.724,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_30f228bc78774778ae79ce77e799d24e",
+      "parentId": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "modified": 1658316688118,
+      "created": 1658316506440,
+      "url": "{{ _.base_url }}/accounts/login/",
+      "name": "Login Admin [200]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"admin@email.com\",\n\t\"password\": \"123456789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0df5aa528f84498bb5219ed5d5664cb9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658316460183,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "parentId": "wrk_94592825d4914c959123d64438de1df0",
+      "modified": 1658277975918,
+      "created": 1658271948312,
+      "name": "E2E - Admin",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658159311844,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_8d6c4758c10948378efe4b675c7c1f95",
+      "parentId": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "modified": 1658316692839,
+      "created": 1658316497026,
+      "url": "{{ _.base_url }}/companies/register/",
+      "name": "Create Company [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Batata Dev Ltda.\",\n  \"cnpj\": \"72192925000192\",\n  \"phone\": \"51921137581\",\n  \"address\": {\n    \"zip_code\": \"70083900\",\n    \"street\": \"Rua dos Bobos\",\n    \"number\": \"0\",\n    \"complement\": null,\n    \"city\": \"Brasília\",\n    \"state\": \"DF\",\n    \"country\": \"Brasil\"\n  }\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5dc1ac3c8dac45ba87b3cd5ba601a7bf"
+        },
+        {
+          "id": "pair_5e91661bf8b44754a5bc9b4dbc289a23",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658316460158,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_08a1719518e3444c9da75b6a83dc07db",
+      "parentId": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "modified": 1658316734123,
+      "created": 1658316654370,
+      "url": "{{ _.base_url }}/accounts/",
+      "name": "List All Users [200]",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_5a0977251d6947a7bf0ea35038dc9598",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658316460145.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4c9ce2524ca4414babb9b82536bcf98b",
+      "parentId": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "modified": 1658317087589,
+      "created": 1658316763762,
+      "url": "{{ _.base_url }}/accounts/{{ _.candidate_id }}/management/activation/",
+      "name": "Activate/Deactivate User [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"is_active\": false\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e1fcf15e5a7249a782376eafae53720c"
+        },
+        {
+          "id": "pair_ed7daae6ee01487ca44d03980a3ef2f0",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658316460064.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b4b08d943b6945898eb3c532e2f7b653",
+      "parentId": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "modified": 1658317080196,
+      "created": 1658316796855,
+      "url": "{{ _.base_url }}/skills/",
+      "name": "Create Skill [201]",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": " {\n        \"title\": \"Java\",\n        \"description\": \"Java é uma linguagem de programação baseado na orientação por objeto desenvolvida na década de 90, baseada na linguagem C, por uma equipe de programadores chefiada por James Gosling, na empresa Sun Microsystems, que em 2008 foi adquirido pela empresa Oracle Corporation.\"\n    }"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_efa5a476de764448a961c011899f0d8c"
+        },
+        {
+          "id": "pair_8562f331001c4f1eb5b9df94e5bbed30",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658316459983,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d0aa7d90446b4eac8022596694637d1f",
+      "parentId": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "modified": 1658317070103,
+      "created": 1658316926902,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Update Skill [200]",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"description\": \"Adoro Java.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_450e491fd0784541a47523ba3b54dd1c"
+        },
+        {
+          "id": "pair_8ac0ddcf029643fd9186e6e50c61f87b",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658316459933,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9ffff0e5a3484bd5b85ab5ec474b0a5b",
+      "parentId": "fld_d91917428cd44f5c9ef90eba0db28cda",
+      "modified": 1658317076922,
+      "created": 1658004559200,
+      "url": "{{ _.base_url }}/skills/{{ _.skill_id }}/",
+      "name": "Destroy Skill [204]",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_35563e43ef3d43f5b3a207ac363e9eba",
+          "name": "Authorization",
+          "value": "Token {{ _.token_admin }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658316459883,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_4a0ddd5ec820259db10f7a03e63f02c842910405",
+      "parentId": "wrk_94592825d4914c959123d64438de1df0",
+      "modified": 1658317043902,
+      "created": 1658159237890,
+      "name": "Base Environment",
+      "data": {
+        "candidate_id": "{% response 'body', 'req_7fa6579a101d4243b021005d88a5f473', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "recruiter_id": "{% response 'body', 'req_a12bed1ef9cd48faa645520ddb218bae', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "company_id": "{% response 'body', 'req_de39f39eaeba47d0bc36edddac3ca44e', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "skill_id": "{% response 'body', 'req_b4b08d943b6945898eb3c532e2f7b653', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        "token_candidate": "{% response 'body', 'req_0e45532d6e7345828dbfb0d37eab6743', 'b64::JC50b2tlbg==::46b', 'never', 60 %}",
+        "token_recruiter": "{% response 'body', 'req_0e8a69d15aaa473792c28fabe0f5e3b3', 'b64::JC50b2tlbg==::46b', 'never', 60 %}",
+        "token_admin": "{% response 'body', 'req_f448fa4a83674d6d8f79368e464aba2b', 'b64::JC50b2tlbg==::46b', 'never', 60 %}",
+        "invalid_id": 9999999
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "candidate_id",
+          "recruiter_id",
+          "company_id",
+          "skill_id",
+          "token_candidate",
+          "token_recruiter",
+          "token_admin",
+          "invalid_id"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1658159237890,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_4a0ddd5ec820259db10f7a03e63f02c842910405",
+      "parentId": "wrk_94592825d4914c959123d64438de1df0",
+      "modified": 1658159237892,
+      "created": 1658159237892,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_0670103e7f92488eaa5e5a10134af1e6",
+      "parentId": "wrk_94592825d4914c959123d64438de1df0",
+      "modified": 1658159237886,
+      "created": 1658159237886,
+      "fileName": "Vagas Emprego - E2E",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_ae370bd0536d4512b7a52e2ed7f95f8a",
+      "parentId": "env_4a0ddd5ec820259db10f7a03e63f02c842910405",
+      "modified": 1658317004819,
+      "created": 1658159319057,
+      "name": "env_dev",
+      "data": { "base_url": "http://localhost:8000/api" },
+      "dataPropertyOrder": { "&": ["base_url"] },
+      "color": "#37ff00",
+      "isPrivate": false,
+      "metaSortKey": 1658159319057,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_7580367e361849719352eb1c4ac7c454",
+      "parentId": "env_4a0ddd5ec820259db10f7a03e63f02c842910405",
+      "modified": 1658273831623,
+      "created": 1658159321265,
+      "name": "env_prod",
+      "data": {
+        "base_url": "https://vagas-emprego-capstone-m5.herokuapp.com/api"
+      },
+      "dataPropertyOrder": { "&": ["base_url"] },
+      "color": "#0400ff",
+      "isPrivate": false,
+      "metaSortKey": 1658159321265,
+      "_type": "environment"
+    }
+  ]
+}

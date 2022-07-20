@@ -1,6 +1,7 @@
 from addresses.serializers import AddressSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from educations.serializers import ListEducationSerializer
+from jobs.serializers import JobSearchSerializer
 from rest_framework.serializers import (
     CharField,
     EmailField,
@@ -8,6 +9,7 @@ from rest_framework.serializers import (
     ListField,
     ModelSerializer,
     Serializer,
+    SerializerMethodField,
     UUIDField,
     ValidationError,
 )
@@ -102,12 +104,12 @@ class AccountSerializerIsRH(ModelSerializer):
             "phone",
             "address",
             "is_human_resources",
-            "is_superuser",
             "company",
             "company_id",
         ]
         read_only_fields = ["is_superuser"]
         extra_kwargs = {"password": {"write_only": True}}
+        depth = 1
 
     def create(self, validated_data: dict):
         user = Account.objects.create_user(**validated_data)
@@ -115,11 +117,53 @@ class AccountSerializerIsRH(ModelSerializer):
         return user
 
 
-class ListAccountsSerializer(ModelSerializer):
+class AccountsReadCandidateSerializer(ModelSerializer):
+    jobs = SerializerMethodField()
+
     class Meta:
         model = Account
-        fields = "__all__"
-        extra_kwargs = {"password": {"write_only": True}}
+        fields = fields = [
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "cpf",
+            "gender",
+            "phone",
+            "address",
+            "skills",
+            "jobs",
+            "is_human_resources",
+        ]
+        depth = 1
+
+    def get_jobs(self, user: Account):
+        jobs_list = []
+
+        for job in user.jobs.all():
+            serializer = JobSearchSerializer(instance=job)
+
+            jobs_list.append(serializer.data)
+
+        return jobs_list
+
+
+class AccountsReadRecruiterSerializer(ModelSerializer):
+    class Meta:
+        model = Account
+        fields = fields = [
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "cpf",
+            "gender",
+            "phone",
+            "address",
+            "company",
+            "is_human_resources",
+        ]
+        depth = 2
 
 
 class LoginSerializer(Serializer):
