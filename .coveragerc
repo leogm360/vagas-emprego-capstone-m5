@@ -2,7 +2,7 @@
 source = .
 omit = 
     venv/*
-    project_base/*
+    project_vagas_emprego/*
     manage.py
 
 [report]
