@@ -32,11 +32,11 @@ class Job(models.Model):
 
     account = models.ManyToManyField(
         "accounts.Account",
-        related_name="accounts_id",
+        related_name="jobs",
     )
 
     company = models.ForeignKey(
         "companies.Company", on_delete=models.CASCADE, related_name="company_id"
     )
 
-    skills = models.ManyToManyField("skills.Skill", related_name="skills_job")
+    skills = models.ManyToManyField("skills.Skill", related_name="skills")

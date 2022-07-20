@@ -22,7 +22,7 @@ class JobBaseSerializer(ModelSerializer):
         depth = 1
 
     def get_subscribers_count(self, job: Job) -> int:
-        return len(job.account.all())
+        return job.account.count()
 
 
 class JobCreateSerializer(JobBaseSerializer):

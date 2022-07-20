@@ -65,12 +65,15 @@ class RegisterAccountView(SerializerByAccountTypeMixin, generics.CreateAPIView):
             self.perform_for_candidate(address, serializer)
 
 
-class ListAccountsView(generics.ListAPIView):
+class ListAccountsView(SerializerByAccountTypeMixin, generics.ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdmOnly]
 
     queryset = Account.objects.all()
-    serializer_class = serializers.ListAccountsSerializer
+    serializer_map = {
+        "HUMAN_RESOURCES": serializers.AccountsReadRecruiterSerializer,
+        "CANDIDATE": serializers.AccountsReadCandidateSerializer,
+    }
 
 
 class LoginAccountsView(APIView):
@@ -92,24 +95,17 @@ class LoginAccountsView(APIView):
         )
 
 
-class AccountsDetailsView(generics.RetrieveUpdateDestroyAPIView):
+class AccountsDetailsView(
+    SerializerByAccountTypeMixin, generics.RetrieveUpdateDestroyAPIView
+):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsOwnerOrAdmin]
 
     queryset = Account.objects.all()
-    serializer_class = serializers.ListAccountsSerializer
-
-
-class ListJobsRegistredView(generics.ListAPIView):
-    ...
-
-
-class AddCompanyToRecruiterView(generics.UpdateAPIView):
-    ...
-
-
-class ActiveAccountView(generics.UpdateAPIView):
-    ...
+    serializer_map = {
+        "HUMAN_RESOURCES": serializers.AccountsReadRecruiterSerializer,
+        "CANDIDATE": serializers.AccountsReadCandidateSerializer,
+    }
 
 
 class ActiveDeactiveAccountView(generics.UpdateAPIView):
